@@ -15,21 +15,21 @@ return (
 		<Bars />
 
 		<NavMenu>
-		<NavLink to='/home' activeStyle>
-			Home
+		<NavLink to='/about' activeStyle>
+			About
 		</NavLink>
-		<NavLink to='/BookingForm' activeStyle>
-		Booking Form
+		<NavLink to='/events' activeStyle>
+			Events
 		</NavLink>
-		<NavLink to='/StudentForm' activeStyle>
-		Student Form
+		<NavLink to='/annual' activeStyle>
+			Annual Report
 		</NavLink>
-		{/* <NavLink to='/team' activeStyle>
+		<NavLink to='/team' activeStyle>
 			Teams
 		</NavLink>
 		<NavLink to='/blogs' activeStyle>
 			Blogs
-		</NavLink> */}
+		</NavLink>
 		<NavLink to='/sign-up' activeStyle>
 			Sign Up
 		</NavLink>
@@ -37,7 +37,7 @@ return (
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>
 		<NavBtn>
-		<NavBtnLink to='/login'>Log in</NavBtnLink>
+		<NavBtnLink to='/signin'>Sign In</NavBtnLink>
 		</NavBtn>
 	</Nav>
 	</>
