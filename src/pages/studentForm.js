@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AnnualReport = () => {
+const StudentForm = () => {
 return (
 	<div
 	style={{
@@ -10,9 +10,9 @@ return (
 		height: '100vh'
 	}}
 	>
-	<h1>Annual Report</h1>
+	<h1>GeeksforGeeks is a Computer Science portal for geeks.</h1>
 	</div>
 );
 };
 
-export default AnnualReport;
+export default StudentForm;

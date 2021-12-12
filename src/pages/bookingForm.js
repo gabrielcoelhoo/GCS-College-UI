@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Teams = () => {
+const BookingForm = () => {
 return (
 	<div
 	style={{
@@ -10,9 +10,9 @@ return (
 		height: '100vh'
 	}}
 	>
-	<h1>Welcome to GeeksforGeeks Team</h1>
+	<h1>GeeksforGeeks is a Computer Science portal for geeks.</h1>
 	</div>
 );
 };
 
-export default Teams;
+export default BookingForm;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Events = () => {
+const Home = () => {
 return (
 	<div
 	style={{
@@ -10,9 +10,9 @@ return (
 		height: '100vh'
 	}}
 	>
-	<h1>Welcome to GeeksforGeeks Events</h1>
+	<h1>Julio e um cara maneiro.</h1>
 	</div>
 );
 };
 
-export default Events;
+export default Home;

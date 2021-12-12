@@ -15,29 +15,20 @@ return (
 		<Bars />
 
 		<NavMenu>
-		<NavLink to='/about' activeStyle>
-			About
+		<NavLink to='/home' activeStyle>
+		home
 		</NavLink>
-		<NavLink to='/events' activeStyle>
-			Events
+		<NavLink to='/bookingForm' activeStyle>
+		bookingForm
 		</NavLink>
-		<NavLink to='/annual' activeStyle>
-			Annual Report
-		</NavLink>
-		<NavLink to='/team' activeStyle>
-			Teams
-		</NavLink>
-		<NavLink to='/blogs' activeStyle>
-			Blogs
-		</NavLink>
-		<NavLink to='/sign-up' activeStyle>
-			Sign Up
+		<NavLink to='/studentForm' activeStyle>
+		studentForm
 		</NavLink>
 		{/* Second Nav */}
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>
 		<NavBtn>
-		<NavBtnLink to='/signin'>Sign In</NavBtnLink>
+		<NavBtnLink to='/login'>Log In</NavBtnLink>
 		</NavBtn>
 	</Nav>
 	</>
