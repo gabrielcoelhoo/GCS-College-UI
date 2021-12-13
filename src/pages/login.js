@@ -6,6 +6,17 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+  function userLogin() {
+    console.log(email, password)
+        // fetch(`http://localhost:8080/api/userDetails?email=${email}&password=${password}`, {
+        //     method: 'POST',
+        // })
+        //     .then((response) => response.json())
+        //     .then(responseJson => {
+        //         console.log(responseJson);
+        //     })
+}
+
 return (
 	<div className="centerContent">
       <h1>Please Log In</h1>
@@ -19,7 +30,8 @@ return (
           <input className="inputUser" type="password" onChange={e => setPassword(e.target.value)}/>
         </label>
         <div className="spaceUP20PX">
-          <button className="btnSubmit" type="submit">Submit</button>
+          <button className="btnSubmit" type="submit" 
+          onClick={userLogin}>Submit</button>
         </div>
       </form>
     </div>

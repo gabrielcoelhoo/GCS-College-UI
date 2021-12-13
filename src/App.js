@@ -7,6 +7,7 @@ import Login from './pages/login';
 import BookingForm from './pages/bookingForm';
 import StudentForm from './pages/studentForm';
 
+
 function App() {
 return (
 	<Router>
