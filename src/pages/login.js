@@ -8,13 +8,13 @@ const Login = () => {
 
   function userLogin() {
     console.log(email, password)
-        // fetch(`http://localhost:8080/api/userDetails?email=${email}&password=${password}`, {
-        //     method: 'POST',
-        // })
-        //     .then((response) => response.json())
-        //     .then(responseJson => {
-        //         console.log(responseJson);
-        //     })
+        fetch(`http://localhost:8080/api/userDetails?email=${email}&password=${password}`, {
+            method: 'GET',
+        })
+            .then((response) => response.json())
+            .then(responseJson => {
+                console.log(responseJson);
+            })
 }
 
 return (
