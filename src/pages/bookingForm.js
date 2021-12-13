@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import Select from 'react-select'
+import '../styles/style.css'
+
 
 const BookingForm = () => {
 
@@ -29,39 +31,30 @@ const BookingForm = () => {
 
 
 return (
-	<div
-	style={{
-		display: 'flex',
-		justifyContent: 'Right',
-		alignItems: 'Right',
-		height: '100vh'
-	}}m 
-	>
-	<div className="login-wrapper">
+	<div className="centerContent">
       <h1>Booking form</h1>
       <form>
         <label>
-          <p>English Course</p>
-			<Select options={options} />
+          <p className='fieldName' >English Course</p>
+			<Select  options={options} />
         </label>
 		<label>
-          <p>Accomodation in weeks</p>
+          <p className='fieldName' >Accomodation in weeks</p>
 		  <Select options={optionsAccomodation} />
         </label>
 		<label>
-          <p>Transfer from Airport</p>
+          <p className='fieldName' >Transfer from Airport</p>
           <Select options={optionsTransfer} />
         </label>
         <label>
-          <p>comments</p>
-          <input type="text" onChange={e => setComments(e.target.value)}/>
+          <p className='fieldName' >Comments</p>
+          <input className='commentsInput' type="text" onChange={e => setComments(e.target.value)}/>
         </label>
-        <div>
-          <button type="submit">Submit</button>
+        <div className='spaceUP20PX'>
+          <button className='btnSubmit'  type="submit">Submit</button>
         </div>
       </form>
     </div>
-	</div>
 );
 };
 

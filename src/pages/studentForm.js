@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Select from 'react-select'
+import '../styles/style.css'
 
 const StudentForm = () => {
 
@@ -11,48 +12,45 @@ const StudentForm = () => {
 	const [comments, setComments] = useState("");
 
 return (
-	<div
-	style={{
-		display: 'flex',
-		justifyContent: 'Right',
-		alignItems: 'Right',
-		height: '100vh'
-	}}
-	>
-<div className="login-wrapper">
+<div className="centerContent">
       <h1>Student form</h1>
       <form>
         <label>
-          <p>Name</p>
-          <input type="text" onChange={e => setName(e.target.value)}/>
+          <p className='fieldName'>Name</p>
+          <input className='inputUser' type="text" onChange={e => setName(e.target.value)}/>
         </label>
 		<label>
-          <p>Address</p>
-          <input type="text" onChange={e => setAddress(e.target.value)}/>
+          <p className='fieldName'>Address</p>
+          <input  className='inputUser' type="text" onChange={e => setAddress(e.target.value)}/>
         </label>
 		<label>
-          <p>email</p>
-          <input type="text" onChange={e => setEmail(e.target.value)}/>
+          <p className='fieldName'>Email</p>
+          <input className='inputUser' type="text" onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
-          <p>phone</p>
-          <input type="text" onChange={e => setPhone(e.target.value)}/>
+          <p className='fieldName'>Phone</p>
+          <input className='inputUser' type="text" onChange={e => setPhone(e.target.value)}/>
         </label>
 		<label>
-          <p>country</p>
-          <input type="text" onChange={e => setCountry(e.target.value)}/>
+          <p className='fieldName'>Country</p>
+          <input className='inputUser' type="text" onChange={e => setCountry(e.target.value)}/>
         </label>
 		<label>
-          <p>comments</p>
-          <input type="text" onChange={e => setComments(e.target.value)}/>
+          <p className='fieldName'>Comments</p>
+          <input className='commentsInput' type="text" onChange={e => setComments(e.target.value)}/>
         </label>
-        <div>
-          <button type="submit">Submit</button>
+        <div className='spaceUP20PX'>
+          <button className='btnSubmit' type="submit">Submit</button>
         </div>
       </form>
     </div>
-	</div>
 );
 };
 
 export default StudentForm;
+
+
+//comments section just type in one line in UI
+//should break when reaches the end of a container 
+//made for it
+//need to be fixed - priority low

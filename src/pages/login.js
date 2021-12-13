@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-//import '...\styles\Login.css'
+import '../styles/style.css'
 
 const Login = () => {
 
@@ -7,31 +7,22 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 
 return (
-	<div
-	style={{
-		display: 'flex',
-		justifyContent: 'Right',
-		alignItems: 'Right',
-		height: '100vh'
-	}}
-	>
-	<div className="login-wrapper">
+	<div className="centerContent">
       <h1>Please Log In</h1>
       <form>
         <label>
-          <p>Email</p>
-          <input type="text" onChange={e => setEmail(e.target.value)}/>
+          <p className="fieldName">Email</p>
+          <input className="inputUser" type="text" onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
-          <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)}/>
+          <p className="fieldName" >Password</p>
+          <input className="inputUser" type="password" onChange={e => setPassword(e.target.value)}/>
         </label>
-        <div>
-          <button type="submit">Submit</button>
+        <div className="spaceUP20PX">
+          <button className="btnSubmit" type="submit">Submit</button>
         </div>
       </form>
     </div>
-	</div>
 );
 };
 
