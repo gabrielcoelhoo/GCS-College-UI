@@ -39,3 +39,7 @@ return (
 };
 
 export default Login;
+
+//set params in Json
+// Add authentication on user credentials - high priority
+//auth will be left for the medium of project

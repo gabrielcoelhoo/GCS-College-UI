@@ -13,7 +13,6 @@ return (
 	<>
 	<Nav>
 		<Bars />
-
 		<NavMenu>
 		<NavLink to='/home'>
 		home

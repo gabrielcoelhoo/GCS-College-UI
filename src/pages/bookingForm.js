@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/style.css'
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 
 const BookingForm = () => {
 
@@ -8,18 +12,32 @@ const BookingForm = () => {
 	const [accomodation, setAccomodation] = useState("");
 	const [transfer, setTransfer] = useState("");
 	const [comments, setComments] = useState("");
+	const [startDate, setStartDate] = useState(new Date());
 
 	function submitBooking() {
 		console.log(englishCourse, accomodation, transfer, comments)
-		fetch(`http://localhost:8080/api/bookingDetails?englishCourse=${englishCourse}
-		&accomodation=${accomodation}&transfer=${transfer}&comments=${comments}`, {
-			method: 'GET',
+		fetch(`http://localhost:8080/api/bookingDetails`, {
+			method: 'POST',
+			headers: {
+    				"Content-Type": "application/json",
+     		 },
+     		 body: JSON.stringify({ 
+				"englishcourse": englishCourse, 
+				"accomodatio": accomodation, 
+				"transfer": transfer, 
+				"comments": comments,
+				"dateOfArrival": startDate
+			 }),
 		})
 			.then((response) => response.json())
 			.then(responseJson => {
 				console.log(responseJson);
 			})
 	}
+
+//request body to get this json I am building up
+//https://stackabuse.com/get-http-post-body-in-spring/
+//https://dev.to/scottshipp/parsing-json-in-spring-boot-part-1-513
 
 	return (
 		<div className="centerContent">
@@ -34,6 +52,13 @@ const BookingForm = () => {
 						<option>intermediate</option>
 						<option>advanced</option>
 					</select>
+					</label>
+					<label>
+				<p className='fieldName' >Date of arrival</p>
+				<DatePicker 
+				className="inputUser"
+				selected={startDate} 
+				onChange={(date) => setStartDate(date)} />
 				</label>
 				<label>
 					<p className='fieldName' >Accomodation in weeks</p>
