@@ -80,7 +80,7 @@ const BookingForm = () => {
 				</label>
 				<label>
 					<p className='fieldName' >Comments</p>
-					<input className='commentsInput' type="text" onChange={e => setComments(e.target.value)} />
+					<textarea className='commentsInput' type="text" onChange={e => setComments(e.target.value)}></textarea>
 				</label>
 				<div className='spaceUP20PX'>
 					<button

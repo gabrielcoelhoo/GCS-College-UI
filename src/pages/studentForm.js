@@ -11,17 +11,27 @@ const StudentForm = () => {
 	const [comments, setComments] = useState("");
 
   function submitStudent() {
-		console.log(name, address, email, phone, country, comments)
-		fetch(`http://localhost:8080/api/submitStudent?name=${name}
-		&address=${address}&email=${email}&phone=${phone}
-    &country=${country}&comments=${comments}`, {
-			method: 'GET',
+		console.log(name, address, email, comments, phone)
+		fetch(`http://localhost:8080/api/submitStudent`, {
+			method: 'POST',
+			headers: {
+    				"Content-Type": "application/json",
+     		 },
+     		 body: JSON.stringify({ 
+				"name": name, 
+				"address": address, 
+				"email": email, 
+        "phone": phone, 
+				"comments": comments,
+				"country": country
+			 }),
 		})
 			.then((response) => response.json())
 			.then(responseJson => {
 				console.log(responseJson);
 			})
 	}
+
 
 return (
 <div className="centerContent">
@@ -49,7 +59,7 @@ return (
         </label>
 		<label>
           <p className='fieldName'>Comments</p>
-          <input className='commentsInput' type="text" onChange={e => setComments(e.target.value)}/>
+          <textarea className='commentsInput' type="text" onChange={e => setComments(e.target.value)}></textarea>
         </label>
         <div className='spaceUP20PX'>
           <button 
