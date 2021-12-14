@@ -10,6 +10,19 @@ const StudentForm = () => {
 	const [country, setCountry] = useState("");
 	const [comments, setComments] = useState("");
 
+  function submitStudent() {
+		console.log(name, address, email, phone, country, comments)
+		fetch(`http://localhost:8080/api/submitStudent?name=${name}
+		&address=${address}&email=${email}&phone=${phone}
+    &country=${country}&comments=${comments}`, {
+			method: 'GET',
+		})
+			.then((response) => response.json())
+			.then(responseJson => {
+				console.log(responseJson);
+			})
+	}
+
 return (
 <div className="centerContent">
       <h1>Student form</h1>
@@ -39,7 +52,10 @@ return (
           <input className='commentsInput' type="text" onChange={e => setComments(e.target.value)}/>
         </label>
         <div className='spaceUP20PX'>
-          <button className='btnSubmit' type="submit">Submit</button>
+          <button 
+            onClick={submitStudent}
+            className='btnSubmit' 
+            type="submit">Submit</button>
         </div>
       </form>
     </div>
