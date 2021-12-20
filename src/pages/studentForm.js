@@ -4,14 +4,14 @@ import '../styles/style.css'
 const StudentForm = () => {
 
 	const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
 	const [address, setAddress] = useState("");
-	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [country, setCountry] = useState("");
 	const [comments, setComments] = useState("");
 
   function submitStudent() {
-		console.log(name, address, email, comments, phone)
+		console.log(name, address, comments, phone)
 		fetch(`http://localhost:8080/api/submitStudent`, {
 			method: 'POST',
 			headers: {
@@ -19,8 +19,8 @@ const StudentForm = () => {
      		 },
      		 body: JSON.stringify({ 
 				"name": name, 
+        "surname": surname,
 				"address": address, 
-				"email": email, 
         "phone": phone, 
 				"comments": comments,
 				"country": country
@@ -41,13 +41,13 @@ return (
           <p className='fieldName'>Name</p>
           <input className='inputUser' type="text" onChange={e => setName(e.target.value)}/>
         </label>
+        <label>
+          <p className='fieldName'>Surname</p>
+          <input className='inputUser' type="text" onChange={e => setSurname(e.target.value)}/>
+        </label>
 		<label>
           <p className='fieldName'>Address</p>
           <input  className='inputUser' type="text" onChange={e => setAddress(e.target.value)}/>
-        </label>
-		<label>
-          <p className='fieldName'>Email</p>
-          <input className='inputUser' type="text" onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
           <p className='fieldName'>Phone</p>
@@ -75,7 +75,8 @@ return (
 export default StudentForm;
 
 
-//comments section just type in one line in UI
-//should break when reaches the end of a container 
-//made for it
-//need to be fixed - priority low
+//comments section just type in one line in UI - done
+//should break when reaches the end of a container  - done 
+
+//maybe I split this screen into two due to the number of parameters
+
