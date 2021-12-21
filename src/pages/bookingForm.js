@@ -13,6 +13,7 @@ const BookingForm = () => {
 	const [transfer, setTransfer] = useState("");
 	const [comments, setComments] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
+	const [coursePeriod, setCoursePeriod] = useState("");
 
 	function submitBooking() {
 		console.log(englishCourse, accomodation, transfer, comments)
@@ -26,7 +27,8 @@ const BookingForm = () => {
 				"accomodatio": accomodation, 
 				"transfer": transfer, 
 				"comments": comments,
-				"dateOfArrival": startDate
+				"StartDate": startDate,
+				"courseperiod": coursePeriod
 			 }),
 		})
 			.then((response) => response.json())
@@ -54,11 +56,19 @@ const BookingForm = () => {
 					</select>
 					</label>
 					<label>
-				<p className='fieldName' >Date of arrival</p>
+				<p className='fieldName' >Start of the course</p>
 				<DatePicker 
 				className="inputUser"
 				selected={startDate} 
 				onChange={(date) => setStartDate(date)} />
+				</label>
+				<label>
+					<p className='fieldName' >Course period</p>
+					<select  className="inputUser" value={coursePeriod} onChange={e => setCoursePeriod(e.target.value)}>
+						<option></option>
+						<option>Morning </option>
+						<option>Afternoon</option>
+					</select>
 				</label>
 				<label>
 					<p className='fieldName' >Accomodation in weeks</p>
@@ -99,5 +109,5 @@ const BookingForm = () => {
 export default BookingForm;
 
 
-//transfer input will be changed to date format
+//transfer input will be changed to date format - done
 //priority high/ medium

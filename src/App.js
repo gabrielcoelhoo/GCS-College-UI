@@ -6,8 +6,6 @@ import Home from './pages/home';
 import Login from './pages/login';
 import BookingForm from './pages/bookingForm';
 import StudentForm from './pages/studentForm';
-import LoginForm from './pages/LoginForm';
-
 
 function App() {
 return (
@@ -18,7 +16,6 @@ return (
         <Route path='/login' component={Login}/>
         <Route path='/BookingForm' component={BookingForm}/>
         <Route path='/StudentForm' component={StudentForm}/> 
-		<Route path='/loginForm' component={LoginForm}/> 
 	</Switch>
 	</Router>
 );

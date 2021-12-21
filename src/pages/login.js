@@ -1,21 +1,33 @@
 import React, {useState} from 'react';
 import '../styles/style.css'
-import StudentForm from './studentForm';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+  let history = useHistory();
 
   function userLogin() {
     console.log(email, password)
-        fetch(`http://localhost:8080/api/userDetails?email=${email}&password=${password}`, {
-            method: 'GET',
+    fetch(`http://localhost:8080/api/userLogin`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "password": password,
+            "email": email
+        }),
+    })
+        .then((response) => response.json())
+        .then(responseJson => {
+            console.log(responseJson);
         })
-            .then((response) => response.json())
-            .then(responseJson => {
-                console.log(responseJson);
-            })
+}
+
+function goToLoginForm() {
+  history.push("studentForm");
 }
 
 
@@ -25,20 +37,23 @@ return (
       <form>
         <label>
           <p className="fieldName">Email</p>
-          <input className="inputUser" type="text" onChange={e => setEmail(e.target.value)}/>
+          <input className="inputUser" type="email" onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
           <p className="fieldName" >Password</p>
-          <input className="inputUser" type="password" onChange={e => setPassword(e.target.value)}/>
+          <input className="inputUser" type="password" required onChange={e => setPassword(e.target.value)}/>
         </label>
         <div className="spaceUP20PX">
           <button className="btnSubmit" type="submit" 
           onClick={userLogin}>Submit</button>
         </div>
-        {/* <div>
-          <button className="btnSubmit" type="submit" 
+        <div className="spaceUP20PX">
+          <button 
+          className="btnSubmit"
+          type="submit" 
+          onClick={goToLoginForm}
           >create an account</button>
-        </div> */}
+        </div>
       </form>
     </div>
 );
