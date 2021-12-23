@@ -17,8 +17,8 @@ return (
 		<NavLink to='/home'>
 		home
 		</NavLink>
-		<NavLink to='/bookingForm'>
-		bookingForm
+		<NavLink to='/CoursesForm'>
+		CoursesForm
 		</NavLink>
 		<NavLink to='/studentForm'>
 		studentForm

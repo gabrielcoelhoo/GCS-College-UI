@@ -6,13 +6,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
-const BookingForm = () => {
+const CoursesForm = () => {
 
 	const [englishCourse, setEnglishCourse] = useState("");
 	const [accomodation, setAccomodation] = useState("");
 	const [transfer, setTransfer] = useState("");
 	const [comments, setComments] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(new Date());
 	const [coursePeriod, setCoursePeriod] = useState("");
 
 	function submitBooking() {
@@ -28,6 +29,7 @@ const BookingForm = () => {
 				"transfer": transfer, 
 				"comments": comments,
 				"StartDate": startDate,
+				"EndDate": endDate,
 				"courseperiod": coursePeriod
 			 }),
 		})
@@ -43,7 +45,7 @@ const BookingForm = () => {
 
 	return (
 		<div className="centerContent">
-			<h1>Booking form</h1>
+			<h1>Course form</h1>
 			<form>
 				<label>
 					<p className='fieldName' >English Course</p>
@@ -61,6 +63,13 @@ const BookingForm = () => {
 				className="inputUser"
 				selected={startDate} 
 				onChange={(date) => setStartDate(date)} />
+				</label>
+				<label>
+				<p className='fieldName' >End of the course</p>
+				<DatePicker 
+				className="inputUser"
+				selected={endDate} 
+				onChange={(date) => setEndDate(date)} />
 				</label>
 				<label>
 					<p className='fieldName' >Course period</p>
@@ -106,7 +115,8 @@ const BookingForm = () => {
 	);
 };
 
-export default BookingForm;
+export default CoursesForm
+;
 
 
 //transfer input will be changed to date format - done

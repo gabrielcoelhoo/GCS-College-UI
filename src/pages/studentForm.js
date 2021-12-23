@@ -27,8 +27,8 @@ const StudentForm = () => {
 				"name": name, 
         "surname": surname,
 				"address": address, 
-        "phone": phone, 
-				"comments": comments,
+        "phoneNumber": phone, 
+				"studentComments": comments,
 				"country": country,
         "password": password,
         "email": email
