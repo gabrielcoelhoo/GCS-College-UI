@@ -14,7 +14,7 @@ return (
 	<Nav>
 		<Bars />
 		<NavMenu>
-		<NavLink to='/home'>
+		<NavLink to='/'>
 		home
 		</NavLink>
 		<NavLink to='/CoursesForm'>

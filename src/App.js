@@ -12,10 +12,10 @@ return (
 	<Router>
 	<Navbar />
 	<Switch>	
-        <Route path='/home' component={Home}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/CoursesForm' component={CoursesForm}/>
-        <Route path='/StudentForm' component={StudentForm}/> 
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/CoursesForm' component={CoursesForm}/>
+        <Route exact path='/StudentForm' component={StudentForm}/> 
 	</Switch>
 	</Router>
 );

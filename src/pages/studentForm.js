@@ -17,7 +17,6 @@ const StudentForm = () => {
   
 
   function submitStudent() {
-		console.log(name, address, comments, phone)
 		fetch(`http://localhost:8080/api/submitStudent`, {
 			method: 'POST',
 			headers: {

@@ -9,7 +9,6 @@ const Login = () => {
   let history = useHistory();
 
   function userLogin() {
-    console.log(email, password)
     fetch(`http://localhost:8080/api/userLogin`, {
         method: 'GET',
         headers: {
@@ -26,7 +25,7 @@ const Login = () => {
         })
 }
 
-function goToLoginForm() {
+function goToStudentForm() {
   history.push("studentForm");
 }
 
@@ -51,7 +50,7 @@ return (
           <button 
           className="btnSubmit"
           type="submit" 
-          onClick={goToLoginForm}
+          onClick={goToStudentForm}
           >create an account</button>
         </div>
       </form>
