@@ -10,7 +10,7 @@ const Login = () => {
 
   function userLogin() {
     fetch(`http://localhost:8080/api/userLogin`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
@@ -21,7 +21,7 @@ const Login = () => {
     })
         .then((response) => response.json())
         .then(responseJson => {
-            console.log(responseJson);
+            console.log(responseJson.token);
         })
 }
 
@@ -36,7 +36,7 @@ return (
       <form>
         <label>
           <p className="fieldName">username</p>
-          <input className="inputUser" type="username" onChange={e => setUsername(e.target.value)}/>
+          <input className="inputUser" type="username" required onChange={e => setUsername(e.target.value)}/>
         </label>
         <label>
           <p className="fieldName" >Password</p>
@@ -64,4 +64,4 @@ export default Login;
 // Add authentication on user credentials - high priority
 //auth will be left for the medium of project
 
-//create a method to move from one screen to another
+//create a method to move from one screen to another - done
