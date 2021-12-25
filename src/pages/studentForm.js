@@ -18,6 +18,10 @@ const StudentForm = () => {
   
 
   function submitStudent() {
+    if (password !== confirmation) {
+      alert("Passwords don't match");
+    }else{
+
 		fetch(`http://localhost:8080/api/submitStudent`, {
 			method: 'POST',
 			headers: {
@@ -39,6 +43,7 @@ const StudentForm = () => {
 			.then(responseJson => {
 				console.log(responseJson);
 			})
+    }
 	}
 
 

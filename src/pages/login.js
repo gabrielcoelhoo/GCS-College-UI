@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import '../styles/style.css'
-import { useHistory } from "react-router-dom";
+import { useHistory} from "react-router-dom";
+
 
 const Login = () => {
 
 	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-  let history = useHistory();
+	const [password, setPassword] = useState("");  
+  const history = useHistory();
+  let token = '';
 
-  function userLogin() {
-    fetch(`http://localhost:8080/api/userLogin`, {
+  async function userLogin() {
+    await fetch(`http://localhost:8080/api/userLogin`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -21,14 +23,12 @@ const Login = () => {
     })
         .then((response) => response.json())
         .then(responseJson => {
-            console.log(responseJson.token);
+          console.log(responseJson);
+            if(token){
+              history.push("CoursesForm");    
+              }
         })
 }
-
-function goToStudentForm() {
-  history.push("studentForm");
-}
-
 
 return (
 	<div className="centerContent">
@@ -50,7 +50,7 @@ return (
           <button 
           className="btnSubmit"
           type="submit" 
-          onClick={goToStudentForm}
+        onClick={() => history.push("studentForm")}
           >create an account</button>
         </div>
       </form>
