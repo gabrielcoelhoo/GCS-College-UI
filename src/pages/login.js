@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
   let history = useHistory();
 
@@ -15,8 +15,8 @@ const Login = () => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "password": password,
-            "email": email
+            "username": username,
+            "password": password
         }),
     })
         .then((response) => response.json())
@@ -35,8 +35,8 @@ return (
       <h1>Please Log In</h1>
       <form>
         <label>
-          <p className="fieldName">Email</p>
-          <input className="inputUser" type="email" onChange={e => setEmail(e.target.value)}/>
+          <p className="fieldName">username</p>
+          <input className="inputUser" type="username" onChange={e => setUsername(e.target.value)}/>
         </label>
         <label>
           <p className="fieldName" >Password</p>
