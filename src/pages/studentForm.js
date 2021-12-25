@@ -5,6 +5,7 @@ const StudentForm = () => {
 
 	const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [username, setUsername] = useState("");
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
 	const [country, setCountry] = useState("");
@@ -25,6 +26,7 @@ const StudentForm = () => {
      		 body: JSON.stringify({ 
 				"name": name, 
         "surname": surname,
+        "username": username,
 				"address": address, 
         "phoneNumber": phone, 
 				"studentComments": comments,
@@ -51,6 +53,10 @@ return (
         <label>
           <p className='fieldName'>Surname</p>
           <input className='inputUser' type="text" onChange={e => setSurname(e.target.value)}/>
+        </label>
+        <label>
+          <p className='fieldName'>Username</p>
+          <input className='inputUser' type="text" onChange={e => setUsername(e.target.value)}/>
         </label>
 		<label>
           <p className='fieldName'>Address</p>
