@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../styles/style.css'
-import { useHistory} from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 
 
 const Login = () => {
@@ -23,10 +23,11 @@ const Login = () => {
     })
         .then((response) => response.json())
         .then(responseJson => {
-          console.log(responseJson);
-            if(token){
-              history.push("CoursesForm");    
-              }
+          token = responseJson.token;
+          if(token){
+            window.location.href = 'CoursesForm';
+          }
+        
         })
 }
 
@@ -58,7 +59,7 @@ return (
 );
 };
 
-export default Login;
+export default withRouter(Login);
 
 //set params in Json
 // Add authentication on user credentials - high priority
