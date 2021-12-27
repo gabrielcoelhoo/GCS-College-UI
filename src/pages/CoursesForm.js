@@ -29,7 +29,15 @@ const CoursesForm = () => {
 			.then(responseJson => {
 				console.log(responseJson);
 			})
-	}
+		}
+
+// 	function check(level, courseStart , courseEnd, period) {
+// 		if(level !== null && courseStart !== null && courseEnd !== null && period !== null){
+// 			submitCourse();
+// 	}else{
+// 		alert("fields are not filled properly");
+// 	}
+// }
 
 //request body to get this json I am building up
 //https://stackabuse.com/get-http-post-body-in-spring/
@@ -41,7 +49,11 @@ const CoursesForm = () => {
 			<form>
 				<label>
 					<p className='fieldName' >English Course</p>
-					<select  className="inputUser" value={level} onChange={e => setLevel(e.target.value)}>
+					<select  
+					required
+					className="inputUser" 
+					value={level} 
+					onChange={e => setLevel(e.target.value)}>
 						<option></option>
 						<option>elementary</option>
 						<option>beginner</option>
@@ -53,6 +65,7 @@ const CoursesForm = () => {
 				<p className='fieldName' >Start of the course</p>
 				<DatePicker 
 				className="inputUser"
+				required
 				selected={courseStart} 
 				onChange={(date) => setCourseStart(date)} />
 				</label>
@@ -65,7 +78,10 @@ const CoursesForm = () => {
 				</label>
 				<label>
 					<p className='fieldName' >Course period</p>
-					<select  className="inputUser" value={period} onChange={e => setPeriod(e.target.value)}>
+					<select  
+					className="inputUser" 
+					value={period} 
+					onChange={e => setPeriod(e.target.value)}>
 						<option></option>
 						<option>Morning </option>
 						<option>Afternoon</option>
@@ -76,8 +92,7 @@ const CoursesForm = () => {
 						onClick={submitCourse}
 						className='btnSubmit'
 						type="submit"
-					>
-						Submit
+					>Submit
 					</button>
 				</div>
 			</form>
@@ -85,8 +100,7 @@ const CoursesForm = () => {
 	);
 };
 
-export default CoursesForm
-;
+export default CoursesForm;
 
 
 //transfer input will be changed to date format - done

@@ -15,7 +15,7 @@ return (
 	  and more recently with desktop publishing software like Aldus PageMaker
 	   including versions of Lorem Ipsum.	
 	</p>
-	<img src={img_home} width='50%' height='auto' alt='GCS College campus' />
+	<img src={img_home} width='80%' height='auto' alt='GCS College campus' />
 
 	<h2>About us</h2>
 	<p>Lorem Ipsum is simply dummy text of the printing and typesetting 

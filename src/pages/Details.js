@@ -12,8 +12,8 @@ const Details = () => {
 	const [comments, setComments] = useState("");
 
 	function submitDetails() {
-		console.log(accomodation, transfer, comments)
-		fetch(`http://localhost:8080/api/submitDetails`, {
+		if(accomodation !== null){
+		fetch(`http://localhost:8080/api/students/submitDetails`, {
 			method: 'POST',
 			headers: {
     				"Content-Type": "application/json",
@@ -29,6 +29,9 @@ const Details = () => {
 			.then(responseJson => {
 				console.log(responseJson);
 			})
+		}else{
+			alert("sasasa");
+		}
 	}
 
 //request body to get this json I am building up
@@ -41,7 +44,11 @@ const Details = () => {
 			<form>
 				<label>
 					<p className='fieldName' >Accomodation in weeks</p>
-					<select  className="inputUser" value={accomodation} onChange={e => setAccomodation(e.target.value)}>
+					<select  
+					className="inputUser" 
+					value={accomodation} 
+					required 
+					onChange={e => setAccomodation(e.target.value)}>
 						<option></option>
 						<option>1</option>
 						<option>2</option>
@@ -51,7 +58,11 @@ const Details = () => {
 				</label>
 				<label>
 					<p className='fieldName' >Transfer from Airport</p>
-					<select className="inputUser" value={transfer} onChange={e => setTransfer(e.target.value)}>
+					<select 
+					className="inputUser" 
+					value={transfer} 
+					required 
+					onChange={e => setTransfer(e.target.value)}>
 						<option></option>
 						<option>yes</option>
 						<option>no</option>
@@ -59,15 +70,17 @@ const Details = () => {
 				</label>
 				<label>
 					<p className='fieldName' >Comments</p>
-					<textarea className='commentsInput' type="text" onChange={e => setComments(e.target.value)}></textarea>
+					<textarea 
+					className='commentsInput' 
+					type="text" 
+					required onChange={e => setComments(e.target.value)}></textarea>
 				</label>
 				<div className='spaceUP20PX'>
 					<button
 						onClick={submitDetails}
 						className='btnSubmit'
 						type="submit"
-					>
-						Submit
+					>Submit
 					</button>
 				</div>
 			</form>

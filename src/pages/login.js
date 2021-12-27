@@ -5,19 +5,19 @@ import { useHistory, withRouter } from "react-router-dom";
 
 const Login = () => {
 
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");  
   const history = useHistory();
   let token = '';
 
   async function userLogin() {
-    await fetch(`http://localhost:8080/api/userLogin`, {
+    await fetch(`http://localhost:8080/api/students/userLogin`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "username": username,
+            "email": email,
             "password": password
         }),
     })
@@ -31,13 +31,14 @@ const Login = () => {
         })
 }
 
+
 return (
 	<div className="centerContent">
       <h1>Please Log In</h1>
       <form>
         <label>
-          <p className="fieldName">username</p>
-          <input className="inputUser" type="username" required onChange={e => setUsername(e.target.value)}/>
+          <p className="fieldName">email</p>
+          <input className="inputUser" type="email" required onChange={e => setEmail(e.target.value)}/>
         </label>
         <label>
           <p className="fieldName" >Password</p>

@@ -5,7 +5,6 @@ const StudentForm = () => {
 
 	const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-  const [username, setUsername] = useState("");
 	const [address, setAddress] = useState("");
 	const [phone, setPhone] = useState("");
 	const [country, setCountry] = useState("");
@@ -14,15 +13,8 @@ const StudentForm = () => {
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState("");
 
-
-  
-
   function submitStudent() {
-    if (password !== confirmation) {
-      alert("Passwords don't match");
-    }else{
-
-		fetch(`http://localhost:8080/api/submitStudent`, {
+  fetch(`http://localhost:8080/api/students/submitStudent`, {
 			method: 'POST',
 			headers: {
     				"Content-Type": "application/json",
@@ -30,7 +22,6 @@ const StudentForm = () => {
      		 body: JSON.stringify({ 
 				"name": name, 
         "surname": surname,
-        "username": username,
 				"address": address, 
         "phoneNumber": phone, 
 				"studentComments": comments,
@@ -44,8 +35,7 @@ const StudentForm = () => {
 				console.log(responseJson);
 			})
     }
-	}
-
+	
 
 return (
 <div className="centerContent">
@@ -58,10 +48,6 @@ return (
         <label>
           <p className='fieldName'>Surname</p>
           <input className='inputUser' type="text" required onChange={e => setSurname(e.target.value)}/>
-        </label>
-        <label>
-          <p className='fieldName'>Username</p>
-          <input className='inputUser' type="text" required onChange={e => setUsername(e.target.value)}/>
         </label>
 		<label>
           <p className='fieldName'>Address</p>
