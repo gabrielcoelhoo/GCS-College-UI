@@ -23,6 +23,9 @@ return (
 		<NavLink to='/studentForm'>
 		studentForm
 		</NavLink>
+		<NavLink to='/Details'>
+		Details
+		</NavLink>
 		{/* Second Nav */}
 		{/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
 		</NavMenu>

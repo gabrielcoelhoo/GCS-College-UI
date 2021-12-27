@@ -53,23 +53,23 @@ return (
       <form>
         <label>
           <p className='fieldName'>Name</p>
-          <input className='inputUser' type="text" onChange={e => setName(e.target.value)}/>
+          <input className='inputUser' type="text" required onChange={e => setName(e.target.value)}/>
         </label>
         <label>
           <p className='fieldName'>Surname</p>
-          <input className='inputUser' type="text" onChange={e => setSurname(e.target.value)}/>
+          <input className='inputUser' type="text" required onChange={e => setSurname(e.target.value)}/>
         </label>
         <label>
           <p className='fieldName'>Username</p>
-          <input className='inputUser' type="text" onChange={e => setUsername(e.target.value)}/>
+          <input className='inputUser' type="text" required onChange={e => setUsername(e.target.value)}/>
         </label>
 		<label>
           <p className='fieldName'>Address</p>
-          <input  className='inputUser' type="text" onChange={e => setAddress(e.target.value)}/>
+          <input  className='inputUser' type="text" required onChange={e => setAddress(e.target.value)}/>
         </label>
         <label>
                     <p className='fieldName'>Email</p>
-                    <input className='inputUser' type="email" onChange={e => setEmail(e.target.value)} />
+                    <input className='inputUser' type="email" required onChange={e => setEmail(e.target.value)} />
                 </label>
                 <label>
                     <p className='fieldName'>Password</p>
@@ -81,15 +81,15 @@ return (
                 </label>
         <label>
           <p className='fieldName'>Phone</p>
-          <input className='inputUser' type="text" onChange={e => setPhone(e.target.value)}/>
+          <input className='inputUser' type="text" required onChange={e => setPhone(e.target.value)}/>
         </label>
 		<label>
           <p className='fieldName'>Country</p>
-          <input className='inputUser' type="text" onChange={e => setCountry(e.target.value)}/>
+          <input className='inputUser' type="text" required onChange={e => setCountry(e.target.value)}/>
         </label>
 		<label>
           <p className='fieldName'>Comments</p>
-          <textarea className='commentsInput' type="text" onChange={e => setComments(e.target.value)}></textarea>
+          <textarea className='commentsInput' type="text" required onChange={e => setComments(e.target.value)}></textarea>
         </label>
         <div className='spaceUP20PX'>
           <button 
