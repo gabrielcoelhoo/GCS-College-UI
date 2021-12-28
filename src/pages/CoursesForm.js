@@ -13,7 +13,7 @@ const CoursesForm = () => {
 	const [period, setPeriod] = useState("");
 	
 	function submitCourse() {
-		fetch(`http://localhost:8080/api/submitCourse`, {
+		fetch(`http://localhost:8080/api/students/submitCourse`, {
 			method: 'POST',
 			headers: {
     				"Content-Type": "application/json",
