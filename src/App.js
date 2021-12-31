@@ -7,10 +7,7 @@ import Login from './pages/login';
 import CoursesForm from './pages/CoursesForm';
 import StudentForm from './pages/studentForm';
 import Allcourses from './pages/Allcourses';
-import courseschanges from './pages/courseschanges';
-
-
-
+import Courseschanges from './pages/Courseschanges';
 
 function App() {
 return (
@@ -22,7 +19,7 @@ return (
         <Route exact path='/CoursesForm' component={CoursesForm}/>
         <Route exact path='/StudentForm' component={StudentForm}/> 
 		<Route exact path='/Allcourses' component={Allcourses}/> 
-		<Route exact path='/courseschanges' component={courseschanges}/>
+		<Route exact path='/Courseschanges' component={Courseschanges}/>
 
 	</Switch>
 	</Router>

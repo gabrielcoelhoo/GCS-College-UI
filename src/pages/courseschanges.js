@@ -1,128 +1,155 @@
-import React, { useState } from 'react';
-import '../styles/style.css'
+import React, { useState, Fragment, useEffect  } from "react";
+import "../styles/Course.css";
 
+import ReadOnlyRow from "../components/Navbar/ReadOnlyRow";
+import EditableRow from "../components/Navbar/EditableRow";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Container, Paper, Button } from '@material-ui/core';
 
+const Courseschanges = () => {
 
-const CourseChanges = () => {
+	const [courses, setCourses] = useState([])
 
-	const paperStyle = { padding: '50px 20px', width: 600, margin: "20px auto" }
+	const [level, setLevel] = useState("");
+	const [courseStart, setCourseStart] = useState(new Date());
+	const [courseEnd, setCourseEnd] = useState(new Date());
+	const [period, setPeriod] = useState("");
+	const [vacancies, setVacancies] = useState("");
 
-	const [course, setCourse] = useState([])
-	const [id, setId] = useState("")
-	const [text, setText] = useState("")
-
-
-
-	// function getById() {
-	// 	fetch(`http://localhost:8080/api/courses/getById/${id}`, {
-	// 		method: 'GET',
-	// 		headers: {
-    // 				"Content-Type": "application/json",
-    //  		 },
-	// 	})
-	// 	.then(res => res.json())
-	// 	.then((result) => {
-			
-	// 			setCourse(result);
-	// 		}
-			
-			
-	// 		)
-	// 	}
-
-		function UpdateById() {
-			fetch(`http://localhost:8080/api/courses/${id}`, {
-				method: 'PUT',
-				headers: {
-						"Content-Type": "application/json",
-				  },
-			})
-
-			
-			.then(res => {
-			if(!res.ok){
-				throw new Error(`HTTP error! status: ${res.status}`);
-			}else{
-				res.json();
-			}
+	
+	function submitCourse() {
+		fetch(`http://localhost:8080/api/courses/submitCourse`, {
+			method: 'POST',
+			headers: {
+    				"Content-Type": "application/json",
+     		 },
+     		 body: JSON.stringify({ 
+				"level": level, 
+				"courseStart": courseStart,
+				"courseEnd": courseEnd,
+				"period": period,
+				"vacancies":vacancies
+			 }),
 		})
-			.then(result => {
-				setCourse(result);
-				})
-				.catch(e => {
-					console.log('There has been a problem with your fetch operation: ' + e.message);
-				  });
-				}
+			.then((response) => response.json())
+			.then(responseJson => {
+				console.log(responseJson);
+			})
+		}
 
-			// function deleteById() {
-			// 	fetch(`http://localhost:8080/api/courses/${id}`, {
-			// 		method: 'DELETE',
-			// 		headers: {
-			// 				"Content-Type": "application/json",
-			// 		  },
-			// 	})
-			// 	.then(res => res.json())
-			
-			// 	.then((result) => {
-			// 		console.log("2 option")
-			// 		console.log(result)
-			// 		})
-					
-			// 	}
-		
+	useEffect(() => {
+		fetch("http://localhost:8080/api/courses/all")
+			.then(res => res.json())
+			.then((result) => {
+				console.log(result);
+				setCourses(result);
+			}
+			)
+	}, [])
 
-	return (
-		<div className="centerContent">
+	// {courses.map(course=>(
+    //     <Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={course.id}>
+    //      Id:{course.id}<br/>
+    //      coursetart:{course.courseStart}<br/>
+    //      courseEnd:{course.courseEnd}<br/>
+	// 	 level:{course.level}<br/>
+	// 	 period:{course.period}<br/>
+	// 	 vacancies:{course.vacancies}
+    //     </Paper>
 
-<Paper elevation={3} style={paperStyle}>
-
-<Paper elevation={6} style={{margin:"10px",padding:"15px", textAlign:"left"}} key={course.id}>
-         Id:{course.id}<br/>
-         coursetart:{course.courseStart}<br/>
-         courseEnd:{course.courseEnd}<br/>
-		 level:{course.level}<br/>
-		 period:{course.period}<br/>
-		 vacancies:{course.vacancies}
-        </Paper>
-		</Paper>
-
-		<label>
-          <p className="fieldName">choose an id</p>
-          <input className="inputUser" type="numeric" required onChange={e => setId(e.target.value)}/>
-        </label>
-
-				{/* <div className='spaceUP20PX'>
-					<button
-						onClick={getById}
-						className='btnSubmit'
-						type="submit"
-					>find by id
-					</button>
-				</div>
+	//follow this new tutorial
+	//https://javascript.plainenglish.io/lets-build-a-crud-website-with-react-and-an-external-api-157d126f3cf2
+  return (
+    <div className="app-container">
+		<table>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>coursestart</th>
+					<th>courseEnd</th>
+					<th>level</th>
+					<th>period</th>
+					<th>vacancies</th>
+				</tr>
+			</thead>
+			<tbody>
+			{courses.map(course=>( 
+			 <tr>
+			 <td>{course.id}</td>
+			 <td>{course.courseStart}</td>
+			 <td>{course.courseEnd}</td>
+			 <td>{course.level}</td>
+			 <td>{course.period}</td>
+			 <td>{course.vacancies}</td>
+		 </tr>
+			))}
+			</tbody>
+		</table>
+		<h1>Course form</h1>
+			<form>
+				<label>
+					<p className='fieldName' >English Course</p>
+					<select  
+					required
+					className="inputUser" 
+					value={level} 
+					onChange={e => setLevel(e.target.value)}>
+						<option></option>
+						<option>elementary</option>
+						<option>beginner</option>
+						<option>intermediate</option>
+						<option>advanced</option>
+					</select>
+					</label>
+					<label>
+				<p className='fieldName' >Start of the course</p>
+				<DatePicker 
+				className="inputUser"
+				required
+				selected={courseStart} 
+				onChange={(date) => setCourseStart(date)} />
+				</label>
+				<label>
+				<p className='fieldName' >End of the course</p>
+				<DatePicker 
+				className="inputUser"
+				selected={courseEnd} 
+				onChange={(date) => setCourseEnd(date)} />
+				</label>
+				<label>
+					<p className='fieldName' >Course period</p>
+					<select  
+					className="inputUser" 
+					value={period} 
+					onChange={e => setPeriod(e.target.value)}>
+						<option></option>
+						<option>Morning </option>
+						<option>Afternoon</option>
+					</select>
+				</label>
+				<label>
+					<p className='fieldName' >vacancies</p>
+					<select  
+					className="inputUser" 
+					value={vacancies} 
+					onChange={e => setVacancies(e.target.value)}>
+						<option></option>
+						<option>5</option>
+						<option>10</option>
+						<option>15</option>
+					</select>
+				</label>
 				<div className='spaceUP20PX'>
 					<button
-						onClick={deleteById}
+						onClick={submitCourse}
 						className='btnSubmit'
 						type="submit"
-					>delete
-					</button>
-				</div> */}
-				<div className='spaceUP20PX'>
-					<button
-						onClick={UpdateById}
-						className='btnSubmit'
-						type="submit"
-					>update
+					>Submit
 					</button>
 				</div>
-
-				<p className="fieldName">{text}</p>
-		
+			</form>
 		</div>
-	);
+  );
 };
 
-export default CourseChanges;
+export default Courseschanges;
