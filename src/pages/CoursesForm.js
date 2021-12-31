@@ -11,6 +11,8 @@ const CoursesForm = () => {
 	const [courseStart, setCourseStart] = useState(new Date());
 	const [courseEnd, setCourseEnd] = useState(new Date());
 	const [period, setPeriod] = useState("");
+	const [vacancies, setVacancies] = useState("");
+
 	
 	function submitCourse() {
 		fetch(`http://localhost:8080/api/students/submitCourse`, {
@@ -22,7 +24,8 @@ const CoursesForm = () => {
 				"level": level, 
 				"courseStart": courseStart,
 				"courseEnd": courseEnd,
-				"period": period
+				"period": period,
+				"vacancies":vacancies
 			 }),
 		})
 			.then((response) => response.json())
@@ -85,6 +88,18 @@ const CoursesForm = () => {
 						<option></option>
 						<option>Morning </option>
 						<option>Afternoon</option>
+					</select>
+				</label>
+				<label>
+					<p className='fieldName' >vacancies</p>
+					<select  
+					className="inputUser" 
+					value={vacancies} 
+					onChange={e => setVacancies(e.target.value)}>
+						<option></option>
+						<option>5</option>
+						<option>10</option>
+						<option>15</option>
 					</select>
 				</label>
 				<div className='spaceUP20PX'>
