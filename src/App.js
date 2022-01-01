@@ -1,29 +1,23 @@
-import React from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './pages/home';
-import Login from './pages/login';
-import CoursesForm from './pages/CoursesForm';
-import StudentForm from './pages/studentForm';
-import Allcourses from './pages/Allcourses';
-import Courseschanges from './pages/Courseschanges';
 
-function App() {
-return (
-	<Router>
-	<Navbar />
-	<Switch>	
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/CoursesForm' component={CoursesForm}/>
-        <Route exact path='/StudentForm' component={StudentForm}/> 
-		<Route exact path='/Allcourses' component={Allcourses}/> 
-		<Route exact path='/Courseschanges' component={Courseschanges}/>
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-	</Switch>
-	</Router>
-);
-}
+import Navbar from '../src/components/Navbar'
+import Users from '../src/components/Users'
+import UserCreate from '../src/pages/UserCreate'
+import UserUpdate from '../src/pages/UserUpdate'
 
-export default App;
+export default function App() {
+	return (
+		<Router>
+		  <div>
+			<Navbar />
+			<Switch>
+			  <Route exact path='/' component={Users} />
+			  <Route exact path='/create' component={UserCreate} />
+			  <Route exact path='/update/:id' component={UserUpdate} />
+			</Switch>
+		  </div>
+		</Router>
+	  );
+	}
