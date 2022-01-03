@@ -28,19 +28,15 @@ const useStyles = makeStyles((theme) => ({
 const CourseCreate = () => {
     const classes = useStyles();
 
-    function submitCourse() {
-        fetch('http://localhost:8080/api/courses/create', {
+    function submitEmployee() {
+        fetch('http://localhost:8080/api/employees/create', {
             method: 'POST',
             headers: {
                 Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "courseStart": courseStart,
-                "courseEnd": courseEnd,
-                "period": period,
-                "level": level,
-                "vacancies": vacancies
+                "name": name
             }),
         })
             //need to fix the json answer
@@ -50,82 +46,39 @@ const CourseCreate = () => {
                     console.log(result)
                     alert(result['message'])
                     if (result['status'] === 'ok') {
-                        window.location.href = '../src/components/Courses';
+                        window.location.href = '../src/components/employees';
                     }
                 }
             )
     }
 
-    const [courseStart, setCourseStart] = useState('');
-    const [courseEnd, setCourseEnd] = useState('');
-    const [period, setPeriod] = useState('');
-    const [vacancies, setVacancies] = useState('');
-    const [level, setLevel] = useState('');
+    const [name, setName] = useState('');
+ 
 
     return (
         <Container maxWidth="xs">
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                   Course
+                   Employee
                 </Typography>
                 <form className={classes.form}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField
-                                autoComplete="courseStart"
-                                courseStart="courseStart"
+                                autoComplete="name"
+                                name="name"
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="courseStart"
-                                label="courseStart"
-                                onChange={(e) => setCourseStart(e.target.value)}
+                                id="name"
+                                label="name"
+                                onChange={(e) => setName(e.target.value)}
                                 autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="courseEnd"
-                                label="courseEnd"
-                                onChange={(e) => setCourseEnd(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="period"
-                                label="period"
-                                onChange={(e) => setPeriod(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="vacancies"
-                                label="vacancies"
-                                onChange={(e) => setVacancies(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="level"
-                                label="level"
-                                onChange={(e) => setLevel(e.target.value)}
                             />
                         </Grid>
                     </Grid>
                     <Button
-                        onClick={submitCourse}
+                        onClick={submitEmployee}
                         type="submit"
                         fullWidth
                         variant="contained"

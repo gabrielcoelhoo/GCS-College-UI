@@ -27,38 +27,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CourseUpdate = () => {
+const EmployeeUpdate = () => {
   const classes = useStyles();
 
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/courses/getById/${id}`)
+    fetch(`http://localhost:8080/api/employees/getById/${id}`)
       .then(res => res.json())
       .then(
         (result) => {
-          setCourseStart(result.courseStart)
-          setCourseEnd(result.courseEnd)
-          setPeriod(result.period)
-          setVacancies(result.vacancies)
-          setLevel(result.level)
+          setName(result.name)
         }
       )
   }, [id])
 
-  function UpdateCourse() {
-    fetch(`http://localhost:8080/api/courses/update/${id}`, {
+  function UpdateEmployee() {
+    fetch(`http://localhost:8080/api/employees/update/${id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "courseStart": courseStart,
-        "courseEnd": courseEnd,
-        "period": period,
-        "vacancies": vacancies,
-        "level": level
+        "name": name
       }),
     })
       .then(res => res.json())
@@ -67,100 +59,40 @@ const CourseUpdate = () => {
           console.log(result);
 
           if (result['status'] === '200') {
-            alert(result[`Course with ID = ${result.id} is updated`])
-            window.location.href = '/';
+            alert(result[`employee with ID = ${result.id} is updated`])
+            window.location.href = '/employees';
           }
         }
       )
   }
 
-  const [courseStart, setCourseStart] = useState('');
-  const [courseEnd, setCourseEnd] = useState('');
-  const [period, setPeriod] = useState('');
-  const [vacancies, setVacancies] = useState('');
-  const [level, setLevel] = useState('');
+  const [name, setName] = useState('');
 
   return (
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-         Course
+         employee
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="courseStart"
-                courseStart="courseStart"
+                autoComplete="name"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="courseStart"
-                label="courseStart"
-                value={courseStart}
-                onChange={(e) => setCourseStart(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="CourseEnd"
-                courseStart="CourseEnd"
-                variant="outlined"
-                required
-                fullWidth
-                id="CourseEnd"
-                label="CourseEnd"
-                value={courseEnd}
-                onChange={(e) => setCourseEnd(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="Period"
-                courseStart="Period"
-                variant="outlined"
-                required
-                fullWidth
-                id="Period"
-                label="Period"
-                value={period}
-                onChange={(e) => setPeriod(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="setVacancies"
-                courseStart="setVacancies"
-                variant="outlined"
-                required
-                fullWidth
-                id="Vacancies"
-                label="Vacancies"
-                value={vacancies}
-                onChange={(e) => setVacancies(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="setLevel"
-                courseStart="setLevel"
-                variant="outlined"
-                required
-                fullWidth
-                id="Level"
-                label="Level"
-                value={level}
-                onChange={(e) => setLevel(e.target.value)}
+                id="name"
+                label="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 autoFocus
               />
             </Grid>
           </Grid>
           <Button
-            onClick={UpdateCourse}
+            onClick={UpdateEmployee}
             type="submit"
             fullWidth
             variant="contained"
@@ -175,4 +107,4 @@ const CourseUpdate = () => {
   );
 }
 
-export default CourseUpdate;
+export default EmployeeUpdate;
