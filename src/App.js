@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from '../src/components/Navbar'
 
+import Home from '../src/pages/Home'
+
 import Users from '../src/components/Users'
 import UserCreate from '../src/pages/UserCreate'
 import UserUpdate from '../src/pages/UserUpdate'
@@ -26,9 +28,12 @@ export default function App() {
 		  <div>
 			<Navbar />
 			<Switch>
+
+			<Route exact path='/' component={Home} />
+
 			  <Route exact path='/users' component={Users} />
-			  <Route exact path='/create' component={UserCreate} />
-			  <Route exact path='/update/:id' component={UserUpdate} />
+			  <Route exact path='/usercreate' component={UserCreate} />
+			  <Route exact path='/userupdate/:id' component={UserUpdate} />
 
 			  <Route exact path='/courses' component={Courses} />
 			  <Route exact path='/coursecreate' component={CourseCreate} />
