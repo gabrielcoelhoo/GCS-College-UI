@@ -39,29 +39,26 @@ const StudentList = () => {
   const [students, setStudents] = useState([])
 
 
-  
+
   useEffect(() => {
-    
+
     StudentsGet()
-    
-}, [])
 
-const StudentsGet = () => {
+  }, [])
 
-  fetch("http://localhost:8080/api/students/all")
-  .then(res => res.json())
-  .then((result) => {
-      console.log(result);
-      setStudents(result);
+  const StudentsGet = () => {
+
+    fetch("http://localhost:8080/api/students/all")
+      .then(res => res.json())
+      .then((result) => {
+        console.log(result);
+        setStudents(result);
+      }
+      )
   }
-  )
-
-
-
-}
 
   const Updatestudent = id => {
-    window.location = '/update/'+id
+    window.location = '/update/' + id
   }
 
   const StudentDelete = id => {
@@ -75,25 +72,25 @@ const StudentsGet = () => {
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
-    .then(
-      (result) => {
-        alert(result['message'])
-        if (result['status'] === 'ok') {
-          StudentsGet();
+      .then(res => res.json())
+      .then(
+        (result) => {
+          alert(result['message'])
+          if (result['status'] === 'ok') {
+            StudentsGet();
+          }
         }
-      }
-    )
+      )
   }
 
   return (
     <div className={classes.root}>
-      <Container className={classes.container} maxWidth="lg">    
+      <Container className={classes.container} maxWidth="lg">
         <Paper className={classes.paper}>
           <Box display="flex">
             <Box flexGrow={1}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>
-               students
+                students
               </Typography>
             </Box>
             <Box>
@@ -105,49 +102,49 @@ const StudentsGet = () => {
             </Box>
           </Box>
           <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">id</TableCell>
-                <TableCell align="center">name</TableCell>
-                <TableCell align="left">surname</TableCell>
-                <TableCell align="left">phoneNumber</TableCell>
-                <TableCell align="left">studentComments</TableCell>
-                <TableCell align="center">country</TableCell>
-                <TableCell align="left">password</TableCell>
-                <TableCell align="center">email</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {students.map((student) => (
-                <TableRow key={student.id}>
-                  <TableCell align="right">{student.id}</TableCell>
-                  <TableCell align="center">
-                    <Box display="flex" justifyContent="center">
-                  <TableCell align="left">{student.name}</TableCell>
-                  </Box>
-                  </TableCell>
-                  <TableCell align="left">{student.surname}</TableCell>
-                  <TableCell align="left">{student.phoneNumber}</TableCell>
-                  <TableCell align="left">{student.studentComments}</TableCell>
-                  <TableCell align="left">{student.country}</TableCell>
-                  <TableCell align="left">{student.password}</TableCell>
-                  <TableCell align="left">{student.email}</TableCell>
-                  <TableCell align="center">
-                    <ButtonGroup color="primary" aria-label="outlined primary button group">
-                      <Button onClick={() => Updatestudent(student.id)}>Edit</Button>
-                      <Button onClick={() => StudentDelete(student.id)}>Del</Button>
-                    </ButtonGroup>
-                  </TableCell>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="right">id</TableCell>
+                  <TableCell align="center">name</TableCell>
+                  <TableCell align="left">surname</TableCell>
+                  <TableCell align="left">phoneNumber</TableCell>
+                  <TableCell align="left">studentComments</TableCell>
+                  <TableCell align="center">country</TableCell>
+                  <TableCell align="left">password</TableCell>
+                  <TableCell align="center">email</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {students.map((student) => (
+                  <TableRow key={student.id}>
+                    <TableCell align="right">{student.id}</TableCell>
+                    <TableCell align="center">
+                      <Box display="flex" justifyContent="center">
+                        <TableCell align="left">{student.name}</TableCell>
+                      </Box>
+                    </TableCell>
+                    <TableCell align="left">{student.surname}</TableCell>
+                    <TableCell align="left">{student.phoneNumber}</TableCell>
+                    <TableCell align="left">{student.studentComments}</TableCell>
+                    <TableCell align="left">{student.country}</TableCell>
+                    <TableCell align="left">{student.password}</TableCell>
+                    <TableCell align="left">{student.email}</TableCell>
+                    <TableCell align="center">
+                      <ButtonGroup color="primary" aria-label="outlined primary button group">
+                        <Button onClick={() => Updatestudent(student.id)}>Edit</Button>
+                        <Button onClick={() => StudentDelete(student.id)}>Del</Button>
+                      </ButtonGroup>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Paper>
       </Container>
     </div>
-    
+
   );
 }
 

@@ -27,44 +27,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserUpdate = () => {
+const CourseUpdate = () => {
   const classes = useStyles();
 
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/students/${id}`)
+    fetch(`http://localhost:8080/api/courses/${id}`)
       .then(res => res.json())
       .then(
         (result) => {
-          setName(result.name)
-          setSurname(result.surname)
-          setAddress(result.address)
-          setPhoneNumber(result.phoneNumber)
-          setCountry(result.country)
-          setStudentComments(result.studentComments)
-          setPassword(result.password)
-          setEmail(result.email)
+          setCourseStart(result.courseStart)
+          setCourseEnd(result.setCourseEnd)
+          setPeriod(result.setPeriod)
+          setVacancies(result.setVacancies)
+          setLevel(result.setLevel)
         }
       )
   }, [id])
 
-  function UpdateStudent() {
-    fetch(`http://localhost:8080/api/students/update/${id}`, {
+  function UpdateCourse() {
+    fetch(`http://localhost:8080/api/courses/update/${id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "name": name,
-        "surname": surname,
-        "address": address,
-        "phoneNumber": phoneNumber,
-        "studentComments": studentComments,
-        "country": country,
-        "password": password,
-        "email": email
+        "courseStart": courseStart,
+        "courseEnd": courseEnd,
+        "period": period,
+        "vacancies": vacancies,
+        "level": level
       }),
     })
       .then(res => res.json())
@@ -73,145 +67,100 @@ const UserUpdate = () => {
           console.log(result);
 
           if (result['status'] === '200') {
-            alert(result[`User with ID = ${result.id} is updated`])
+            alert(result[`Course with ID = ${result.id} is updated`])
             window.location.href = '/';
           }
         }
       )
   }
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [address, setAddress] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [country, setCountry] = useState('');
-  const [studentComments, setStudentComments] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [courseStart, setCourseStart] = useState('');
+  const [courseEnd, setCourseEnd] = useState('');
+  const [period, setPeriod] = useState('');
+  const [vacancies, setVacancies] = useState('');
+  const [level, setLevel] = useState('');
 
   return (
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          student
+         Course
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="name"
-                name="name"
+                autoComplete="courseStart"
+                courseStart="courseStart"
                 variant="outlined"
                 required
                 fullWidth
-                id="name"
-                label="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                id="courseStart"
+                label="courseStart"
+                value={courseStart}
+                onChange={(e) => setCourseStart(e.target.value)}
                 autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="surname"
-                name="surname"
+                autoComplete="setCourseEnd"
+                courseStart="setCourseEnd"
                 variant="outlined"
                 required
                 fullWidth
-                id="surname"
-                label="surname"
-                value={surname}
-                onChange={(e) => setSurname(e.target.value)}
+                id="setCourseEnd"
+                label="setCourseEnd"
+                value={courseEnd}
+                onChange={(e) => setCourseEnd(e.target.value)}
                 autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="address"
-                name="address"
+                autoComplete="setPeriod"
+                courseStart="setPeriod"
                 variant="outlined"
                 required
                 fullWidth
-                id="address"
-                label="address"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                id="setPeriod"
+                label="setPeriod"
+                value={period}
+                onChange={(e) => setPeriod(e.target.value)}
                 autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="phoneNumber"
-                name="phoneNumber"
+                autoComplete="setVacancies"
+                courseStart="setVacancies"
                 variant="outlined"
                 required
                 fullWidth
-                id="phoneNumber"
-                label="phoneNumber"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                id="setVacancies"
+                label="setVacancies"
+                value={vacancies}
+                onChange={(e) => setVacancies(e.target.value)}
                 autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="country"
-                name="country"
+                autoComplete="setLevel"
+                courseStart="setLevel"
                 variant="outlined"
                 required
                 fullWidth
-                id="country"
-                label="country"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="studentComments"
-                name="studentComments"
-                variant="outlined"
-                required
-                fullWidth
-                id="studentComments"
-                label="studentComments"
-                value={studentComments}
-                onChange={(e) => setStudentComments(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="password"
-                name="password"
-                variant="outlined"
-                required
-                fullWidth
-                id="password"
-                label="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="email"
-                name="email"
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="setLevel"
+                label="setLevel"
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
                 autoFocus
               />
             </Grid>
           </Grid>
           <Button
-            onClick={UpdateStudent}
+            onClick={UpdateCourse}
             type="submit"
             fullWidth
             variant="contained"
@@ -226,4 +175,4 @@ const UserUpdate = () => {
   );
 }
 
-export default UserUpdate;
+export default CourseUpdate;

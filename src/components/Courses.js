@@ -33,67 +33,64 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StudentList = () => {
+const CourseList = () => {
   const classes = useStyles();
 
-  const [students, setStudents] = useState([])
+  const [courses, setCourses] = useState([])
 
 
-  
+
   useEffect(() => {
-    
-    StudentsGet()
-    
-}, [])
 
-const StudentsGet = () => {
+    CoursesGet()
 
-  fetch("http://localhost:8080/api/students/all")
-  .then(res => res.json())
-  .then((result) => {
-      console.log(result);
-      setStudents(result);
-  }
-  )
+  }, [])
 
+  const CoursesGet = () => {
 
-
-}
-
-  const Updatestudent = id => {
-    window.location = '/update/'+id
+    fetch("http://localhost:8080/api/courses/all")
+      .then(res => res.json())
+      .then((result) => {
+        console.log(result);
+        setCourses(result);
+      }
+      )
   }
 
-  const StudentDelete = id => {
+  const CourseUpdate = id => {
+    window.location = '/coursesupdate/' + id
+  }
+
+  const CourseDelete = id => {
     var data = {
       'id': id
     }
-    fetch(`http://localhost:8080/api/students/delete/${id}`, {
+    fetch(`http://localhost:8080/api/courses/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
-    .then(
-      (result) => {
-        alert(result['message'])
-        if (result['status'] === 'ok') {
-          StudentsGet();
+      .then(res => res.json())
+      .then(
+        (result) => {
+          alert(result['message'])
+          if (result['status'] === 'ok') {
+            CoursesGet();
+          }
         }
-      }
-    )
+      )
   }
 
   return (
     <div className={classes.root}>
-      <Container className={classes.container} maxWidth="lg">    
+      <Container className={classes.container} maxWidth="lg">
         <Paper className={classes.paper}>
           <Box display="flex">
             <Box flexGrow={1}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>
-               students
+                courses
               </Typography>
             </Box>
             <Box>
@@ -105,50 +102,46 @@ const StudentsGet = () => {
             </Box>
           </Box>
           <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">id</TableCell>
-                <TableCell align="center">name</TableCell>
-                <TableCell align="left">surname</TableCell>
-                <TableCell align="left">phoneNumber</TableCell>
-                <TableCell align="left">studentComments</TableCell>
-                <TableCell align="center">country</TableCell>
-                <TableCell align="left">password</TableCell>
-                <TableCell align="center">email</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {students.map((student) => (
-                <TableRow key={student.id}>
-                  <TableCell align="right">{student.id}</TableCell>
-                  <TableCell align="center">
-                    <Box display="flex" justifyContent="center">
-                  <TableCell align="left">{student.name}</TableCell>
-                  </Box>
-                  </TableCell>
-                  <TableCell align="left">{student.surname}</TableCell>
-                  <TableCell align="left">{student.phoneNumber}</TableCell>
-                  <TableCell align="left">{student.studentComments}</TableCell>
-                  <TableCell align="left">{student.country}</TableCell>
-                  <TableCell align="left">{student.password}</TableCell>
-                  <TableCell align="left">{student.email}</TableCell>
-                  <TableCell align="center">
-                    <ButtonGroup color="primary" aria-label="outlined primary button group">
-                      <Button onClick={() => Updatestudent(student.id)}>Edit</Button>
-                      <Button onClick={() => StudentDelete(student.id)}>Del</Button>
-                    </ButtonGroup>
-                  </TableCell>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="right">id</TableCell>
+                  <TableCell align="center">start</TableCell>
+                  <TableCell align="left">end</TableCell>
+                  <TableCell align="left">level</TableCell>
+                  <TableCell align="left">period</TableCell>
+                  <TableCell align="center">vancancies</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {courses.map((course) => (
+                  <TableRow key={course.id}>
+                    <TableCell align="right">{course.id}</TableCell>
+                    <TableCell align="center">
+                      <Box display="flex" justifyContent="center">
+                        <TableCell align="left">{course.courseStart}</TableCell>
+                      </Box>
+                    </TableCell>
+                    <TableCell align="left">{course.courseEnd}</TableCell>
+                    <TableCell align="left">{course.period}</TableCell>
+                    <TableCell align="left">{course.level}</TableCell>
+                    <TableCell align="left">{course.vacancies}</TableCell>
+                    <TableCell align="center">
+                      <ButtonGroup color="primary" aria-label="outlined primary button group">
+                        <Button onClick={() => CourseUpdate(course.id)}>Edit</Button>
+                        <Button onClick={() => CourseDelete(course.id)}>Del</Button>
+                      </ButtonGroup>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Paper>
       </Container>
     </div>
-    
+
   );
 }
 
-export default StudentList;
+export default CourseList;

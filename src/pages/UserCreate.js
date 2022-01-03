@@ -46,10 +46,11 @@ const UserCreate = () => {
                 "email": email
             }),
         })
-        //need to fix the json answer
+            //need to fix the json answer
             .then(res => res.json())
             .then(
                 (result) => {
+                    console.log(result)
                     alert(result['message'])
                     if (result['status'] === 'ok') {
                         window.location.href = '../src/components/Users';
@@ -159,7 +160,7 @@ const UserCreate = () => {
                         </Grid>
                     </Grid>
                     <Button
-                     onClick={submitStudent}
+                        onClick={submitStudent}
                         type="submit"
                         fullWidth
                         variant="contained"
