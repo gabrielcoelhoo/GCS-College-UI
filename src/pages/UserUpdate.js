@@ -74,7 +74,7 @@ const UserUpdate = () => {
 
           if (result['status'] === '200') {
             alert(result[`User with ID = ${result.id} is updated`])
-            window.location.href = '/';
+            window.location.href = '/users';
           }
         }
       )
