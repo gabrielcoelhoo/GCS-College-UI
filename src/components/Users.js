@@ -58,7 +58,7 @@ const StudentList = () => {
   }
 
   const Updatestudent = id => {
-    window.location = '/update/' + id
+    window.location = '/userupdate/' + id
   }
 
   const StudentDelete = id => {
@@ -94,7 +94,7 @@ const StudentList = () => {
               </Typography>
             </Box>
             <Box>
-              <Link to="/create">
+              <Link to="/usercreate">
                 <Button variant="contained" color="primary">
                   CREATE
                 </Button>
