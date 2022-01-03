@@ -58,7 +58,7 @@ const CourseList = () => {
   }
 
   const CourseUpdate = id => {
-    window.location = '/coursesupdate/' + id
+    window.location = '/courseupdate/' + id
   }
 
   const CourseDelete = id => {
@@ -94,7 +94,7 @@ const CourseList = () => {
               </Typography>
             </Box>
             <Box>
-              <Link to="/create">
+              <Link to="/coursecreate">
                 <Button variant="contained" color="primary">
                   CREATE
                 </Button>
