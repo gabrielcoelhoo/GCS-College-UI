@@ -64,6 +64,9 @@ function Navbar() {
             <Link to="/enrolments" className={classes.link}>
             enrolments
             </Link>
+            <Link to="/login" className={classes.link}>
+            login
+            </Link>
           </div>
         )}
       </Toolbar>

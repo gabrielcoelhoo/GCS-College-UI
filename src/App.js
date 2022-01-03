@@ -6,6 +6,8 @@ import Navbar from '../src/components/Navbar'
 
 import Home from '../src/pages/Home'
 
+import Login from '../src/pages/Login'
+
 import Users from '../src/components/Users'
 import UserCreate from '../src/pages/UserCreate'
 import UserUpdate from '../src/pages/UserUpdate'
@@ -30,6 +32,8 @@ export default function App() {
 			<Switch>
 
 			<Route exact path='/' component={Home} />
+
+			<Route exact path='/login' component={Login} />
 
 			  <Route exact path='/users' component={Users} />
 			  <Route exact path='/usercreate' component={UserCreate} />
