@@ -52,23 +52,14 @@ function Navbar() {
             <Link to="/" className={classes.link}>
               Home
             </Link>
-            <Link to="/courses" className={classes.link}>
-              Courses
-            </Link>
-            <Link to="/employees" className={classes.link}>
-              Employees
-            </Link>
-            <Link to="/users" className={classes.link}>
-            Users
-            </Link>
-            <Link to="/enrolments" className={classes.link}>
-            Enrolments
+            <Link to="/UserCreate" className={classes.link}>
+            Register
             </Link>
             <Link to="/login" className={classes.link}>
             Login
             </Link>
-            <Link to="/coursecreate" className={classes.link}>
-            Coursecreate
+            <Link to="/login" className={classes.link}>
+            Logout
             </Link>
           </div>
         )}

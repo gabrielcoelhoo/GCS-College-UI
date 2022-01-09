@@ -5,6 +5,9 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
+
+// const baseURL = "http://localhost:8080/login/register";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -28,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
 const UserCreate = () => {
     const classes = useStyles();
 
+
     function submitStudent() {
-        fetch('http://localhost:8080/api/students/create', {
+        fetch('http://localhost:8080/api/users/create', {
             method: 'POST',
             headers: {
                 Accept: 'application/form-data',
@@ -40,7 +44,7 @@ const UserCreate = () => {
                 "surname": surname,
                 "address": address,
                 "phoneNumber": phoneNumber,
-                "studentComments": studentComments,
+                "userComments": userComments,
                 "country": country,
                 "password": password,
                 "email": email
@@ -58,13 +62,14 @@ const UserCreate = () => {
                 }
             )
     }
+    
 
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [country, setCountry] = useState('');
-    const [studentComments, setStudentComments] = useState('');
+    const [userComments, setUserComments] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     return (
@@ -133,9 +138,9 @@ const UserCreate = () => {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                id="studentComments"
-                                label="studentComments"
-                                onChange={(e) => setStudentComments(e.target.value)}
+                                id="usercomments"
+                                label="usercomments"
+                                onChange={(e) => setUserComments(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>

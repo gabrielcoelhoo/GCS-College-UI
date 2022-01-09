@@ -78,3 +78,6 @@ function DrawerComponent() {
   );
 }
 export default DrawerComponent;
+
+//code from
+//https://javascript.works-hub.com/learn/how-to-create-a-responsive-navbar-using-material-ui-and-react-router-f9a01
