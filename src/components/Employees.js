@@ -94,7 +94,7 @@ const EmployeeList = () => {
               </Typography>
             </Box>
             <Box>
-              <Link to="/createEmployee">
+              <Link to="/EmployeeCreate">
                 <Button variant="contained" color="primary">
                   CREATE
                 </Button>

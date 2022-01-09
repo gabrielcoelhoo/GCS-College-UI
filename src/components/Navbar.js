@@ -50,22 +50,25 @@ function Navbar() {
         ) : (
           <div className={classes.navlinks}>
             <Link to="/" className={classes.link}>
-              home
+              Home
             </Link>
             <Link to="/courses" className={classes.link}>
-              courses
+              Courses
             </Link>
             <Link to="/employees" className={classes.link}>
-              employees
+              Employees
             </Link>
             <Link to="/users" className={classes.link}>
-            users
+            Users
             </Link>
             <Link to="/enrolments" className={classes.link}>
-            enrolments
+            Enrolments
             </Link>
             <Link to="/login" className={classes.link}>
-            login
+            Login
+            </Link>
+            <Link to="/coursecreate" className={classes.link}>
+            Coursecreate
             </Link>
           </div>
         )}

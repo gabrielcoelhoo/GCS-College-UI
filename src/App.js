@@ -50,6 +50,14 @@ export default function App() {
 			  <Route exact path='/enrolments' component={Enrolments} />
 			  <Route exact path='/enrolmentcreate' component={EnrolmentCreate} />
 			  <Route exact path='/enrolmentupdate/:id' component={EnrolmentUpdate} />
+
+			  <Route
+                path="/logout"
+                exact
+                component={() => (
+                  <Login message="User Logged Out Successfully." />
+                )}
+              />
 			</Switch>
 		  </div>
 		</Router>

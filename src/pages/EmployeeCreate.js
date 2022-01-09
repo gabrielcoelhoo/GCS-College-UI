@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-const CourseCreate = () => {
+const EmployeeCreate = () => {
     const classes = useStyles();
 
     function submitEmployee() {
@@ -93,4 +93,4 @@ const CourseCreate = () => {
     );
 }
 
-export default CourseCreate;
+export default EmployeeCreate;
