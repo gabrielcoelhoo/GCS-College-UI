@@ -6,28 +6,32 @@ const Home = () => {
 return (
 	<div className='centerContent'>
 	<h1>GCS COLLEGE</h1>
-	<p>Lorem Ipsum is simply dummy text of the printing and typesetting 
-	industry. Lorem Ipsum has been the industry's standard dummy text ever
-	since the 1500s, when an unknown printer took a galley of type and 
-	scrambled it to make a type specimen book. It has survived not only 
-	five centuries, but also the leap into electronic typesetting,
-	 remaining essentially unchanged. It was popularised in the 1960s
-	  with the release of Letraset sheets containing Lorem Ipsum passages, 
-	  and more recently with desktop publishing software like Aldus PageMaker
-	   including versions of Lorem Ipsum.	
+	<p className='pHome'>GCS College delivers English language courses in the centre of Dublin, 
+		Ireland, since 2009. Everyone that works at GCS is passionate and committed: 
+		they love what they do! Awarded the Best Language School for the second year 
+		in a row by the education stars website (education stars-awards.org), we are ready
+		 to provide an ultimate exchange experience! Currently, 
+		GCS College occupies an area of 14,000 m² on Henry street
+		 and has students from various countries in Latin America, Europe and Asia.
 	</p>
 	<img src={img_home} width='50%' height='auto' alt='GCS College campus' />
 
-	<h2>About us</h2>
-	<p>Lorem Ipsum is simply dummy text of the printing and typesetting 
-	industry. Lorem Ipsum has been the industry's standard dummy text ever
-	since the 1500s, when an unknown printer took a galley of type and 
-	scrambled it to make a type specimen book. It has survived not only 
-	five centuries, but also the leap into electronic typesetting,
-	 remaining essentially unchanged. It was popularised in the 1960s
-	  with the release of Letraset sheets containing Lorem Ipsum passages, 
-	  and more recently with desktop publishing software like Aldus PageMaker
-	   including versions of Lorem Ipsum.	
+	<h2 className='pHome' >About us</h2>
+	<p className='pHome'>At Dublin’s GCS College we offer an English language learning experience which is both fun and educational
+		. We want our students to feel part of something special, something different. 
+		At GCS College, you will experience more than just learning a foreign language; 
+		you will be part of our global family !
+
+Our fantastic social programme offers you the chance to get a taste of everything Ireland has to offer,
+ and provides you with lots of opportunities to speak English in real social environments. 
+ Inside the classroom, we find that our students learn English faster when they’re having fun!
+
+Our teachers have the passion and experience to ensure that you achieve all of your learning objectives
+ in an interesting and fun manner. We carefully select teachers who understand your goals and work hard to build
+  a close relationship with you. On top of that, the school has a first-class support team, 
+  who are there to make sure your stay is as educational and enjoyable as possible.
+
+GCS College is accredited by ACELS.
 	</p> 
 	
 	</div>
