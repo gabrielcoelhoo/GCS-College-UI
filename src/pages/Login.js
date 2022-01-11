@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import {useHistory} from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -28,7 +30,13 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
 
-    const [token, setToken] = React.useState('');
+    // const [token, setToken] = React.useState('');
+
+    var token = "";
+    var emailUser = "";
+
+    const history = useHistory();
+
 
     const onChange = event => {
         localStorage.setItem('token', token);
@@ -50,12 +58,17 @@ const Login = () => {
             .then(res => res.json())
             .then((result) => {
                     console.log(result);
-                    setToken(result.token);
+                    token = result.token;
+                    window.localStorage.setItem("token", token);
+                    emailUser = result.email;
+                    window.localStorage.setItem("emailUser", emailUser);
+                    
                     if(result.token){
-                        //equal to url
-                        window.location.href = '../src/pages/CourseCreate';
+                        alert('succesful');
+                        window.location.href = '../AvailableCourses';
+                        console.log(window.localStorage.getItem("token"));
                     }else{
-                        alert("please provide a correct username and/ or password");
+                        alert('please provide a correct username and/ or password');
                     }
 
                     // alert(result['message'])

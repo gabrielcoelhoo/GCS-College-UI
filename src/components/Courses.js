@@ -65,7 +65,7 @@ const CourseList = () => {
     var data = {
       'id': id
     }
-    fetch(`http://localhost:8080/api/courses/delete/${id}`, {
+   fetch(`http://localhost:8080/api/courses/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/form-data',
@@ -75,10 +75,11 @@ const CourseList = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          alert(result['message'])
-          if (result['status'] === 'ok') {
-            CoursesGet();
-          }
+          console.log(result)
+          // if (result.status === 200) {
+          //   aler);
+          //   CoursesGet();
+          // }
         }
       )
   }

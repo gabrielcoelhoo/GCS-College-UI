@@ -33,39 +33,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StudentList = () => {
+const Users = () => {
   const classes = useStyles();
 
-  const [students, setStudents] = useState([])
+  const [users, setUsers] = useState([])
 
 
 
   useEffect(() => {
 
-    StudentsGet()
+    UsersGet()
 
   }, [])
 
-  const StudentsGet = () => {
+  const UsersGet = () => {
 
-    fetch("http://localhost:8080/api/students/all")
+    fetch("http://localhost:8080/api/users/all")
       .then(res => res.json())
       .then((result) => {
         console.log(result);
-        setStudents(result);
+        setUsers(result);
       }
       )
   }
 
-  const Updatestudent = id => {
+  const Updateuser = id => {
     window.location = '/userupdate/' + id
   }
 
-  const StudentDelete = id => {
+  const UserDelete = id => {
     var data = {
       'id': id
     }
-    fetch(`http://localhost:8080/api/students/delete/${id}`, {
+    fetch(`http://localhost:8080/api/users/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/form-data',
@@ -77,7 +77,7 @@ const StudentList = () => {
         (result) => {
           alert(result['message'])
           if (result['status'] === 'ok') {
-            StudentsGet();
+            UsersGet();
           }
         }
       )
@@ -90,7 +90,7 @@ const StudentList = () => {
           <Box display="flex">
             <Box flexGrow={1}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                students
+                users
               </Typography>
             </Box>
             <Box>
@@ -109,31 +109,31 @@ const StudentList = () => {
                   <TableCell align="center">name</TableCell>
                   <TableCell align="left">surname</TableCell>
                   <TableCell align="left">phoneNumber</TableCell>
-                  <TableCell align="left">studentComments</TableCell>
+                  <TableCell align="left">userComments</TableCell>
                   <TableCell align="center">country</TableCell>
                   <TableCell align="left">password</TableCell>
                   <TableCell align="center">email</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {students.map((student) => (
-                  <TableRow key={student.id}>
-                    <TableCell align="right">{student.id}</TableCell>
+                {users.map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell align="right">{user.id}</TableCell>
                     <TableCell align="center">
                       <Box display="flex" justifyContent="center">
-                        <TableCell align="left">{student.name}</TableCell>
+                        <TableCell align="left">{user.name}</TableCell>
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{student.surname}</TableCell>
-                    <TableCell align="left">{student.phoneNumber}</TableCell>
-                    <TableCell align="left">{student.studentComments}</TableCell>
-                    <TableCell align="left">{student.country}</TableCell>
-                    <TableCell align="left">{student.password}</TableCell>
-                    <TableCell align="left">{student.email}</TableCell>
+                    <TableCell align="left">{user.surname}</TableCell>
+                    <TableCell align="left">{user.phoneNumber}</TableCell>
+                    <TableCell align="left">{user.userComments}</TableCell>
+                    <TableCell align="left">{user.country}</TableCell>
+                    <TableCell align="left">{user.password}</TableCell>
+                    <TableCell align="left">{user.email}</TableCell>
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
-                        <Button onClick={() => Updatestudent(student.id)}>Edit</Button>
-                        <Button onClick={() => StudentDelete(student.id)}>Del</Button>
+                        <Button onClick={() => Updateuser(user.id)}>Edit</Button>
+                        <Button onClick={() => UserDelete(user.id)}>Del</Button>
                       </ButtonGroup>
                     </TableCell>
                   </TableRow>
@@ -148,4 +148,4 @@ const StudentList = () => {
   );
 }
 
-export default StudentList;
+export default Users;

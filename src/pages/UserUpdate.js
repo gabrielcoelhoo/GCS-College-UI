@@ -33,7 +33,7 @@ const UserUpdate = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/students/${id}`)
+    fetch(`http://localhost:8080/api/users/${id}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -42,18 +42,17 @@ const UserUpdate = () => {
           setAddress(result.address)
           setPhoneNumber(result.phoneNumber)
           setCountry(result.country)
-          setStudentComments(result.studentComments)
+          setUserComments(result.userComments)
           setPassword(result.password)
           setEmail(result.email)
         }
       )
   }, [id])
 
-  function UpdateStudent() {
-    fetch(`http://localhost:8080/api/students/update/${id}`, {
+  function UpdateUsers() {
+    fetch(`http://localhost:8080/api/users/update/${id}`, {
       method: 'PUT',
       headers: {
-        Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -61,7 +60,7 @@ const UserUpdate = () => {
         "surname": surname,
         "address": address,
         "phoneNumber": phoneNumber,
-        "studentComments": studentComments,
+        "usersComments": userComments,
         "country": country,
         "password": password,
         "email": email
@@ -85,7 +84,7 @@ const UserUpdate = () => {
   const [address, setAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [country, setCountry] = useState('');
-  const [studentComments, setStudentComments] = useState('');
+  const [userComments, setUserComments] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
@@ -93,7 +92,7 @@ const UserUpdate = () => {
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          student
+          Users
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={2}>
@@ -169,15 +168,15 @@ const UserUpdate = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="studentComments"
-                name="studentComments"
+                autoComplete="userComments"
+                name="userComments"
                 variant="outlined"
                 required
                 fullWidth
-                id="studentComments"
-                label="studentComments"
-                value={studentComments}
-                onChange={(e) => setStudentComments(e.target.value)}
+                id="userComments"
+                label="userComments"
+                value={userComments}
+                onChange={(e) => setUserComments(e.target.value)}
                 autoFocus
               />
             </Grid>
@@ -211,7 +210,7 @@ const UserUpdate = () => {
             </Grid>
           </Grid>
           <Button
-            onClick={UpdateStudent}
+            onClick={UpdateUsers}
             type="submit"
             fullWidth
             variant="contained"
