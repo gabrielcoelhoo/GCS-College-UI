@@ -28,12 +28,17 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
 
+    const [token, setToken] = React.useState('');
+
+    const onChange = event => {
+        localStorage.setItem('token', token);
+      };
+
 
     function userLogin() {
         fetch('http://localhost:8080/api/users/userLogin', {
             method: 'POST',
             headers: {
-                Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -43,12 +48,25 @@ const Login = () => {
         })
             //need to fix the json answer
             .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result)
+            .then((result) => {
+                    console.log(result);
+                    setToken(result.token);
+                    if(result.token){
+                        //equal to url
+                        window.location.href = '../src/pages/CourseCreate';
+                    }else{
+                        alert("please provide a correct username and/ or password");
+                    }
+
                     // alert(result['message'])
                     // if (result['status'] === 'ok') {
                     //     window.location.href = '../src/components/Users';
+                    // }
+
+                    // if (token) {
+                    //     navigation.navigate("Expense");
+                    // } else {
+                    //     setAnswerResponse("please provide a correct username and/ or password")
                     // }
                 }
             )

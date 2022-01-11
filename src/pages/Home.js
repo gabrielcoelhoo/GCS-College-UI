@@ -16,7 +16,7 @@ return (
 	</p>
 	<img src={img_home} width='50%' height='auto' alt='GCS College campus' />
 
-	<h2 className='pHome' >About us</h2>
+	<h2 className='aboutHome' >About us</h2>
 	<p className='pHome'>At Dublin’s GCS College we offer an English language learning experience which is both fun and educational
 		. We want our students to feel part of something special, something different. 
 		At GCS College, you will experience more than just learning a foreign language; 

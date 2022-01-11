@@ -24,6 +24,8 @@ import Enrolments from '../src/components/Enrolments'
 import EnrolmentCreate from '../src/pages/EnrolmentCreate'
 import EnrolmentUpdate from '../src/pages/EnrolmentUpdate'
 
+import AvailableCourses from "./pages/AvailableCourses";
+
 export default function App() {
 	return (
 		<Router>
@@ -50,6 +52,8 @@ export default function App() {
 			  <Route exact path='/enrolments' component={Enrolments} />
 			  <Route exact path='/enrolmentcreate' component={EnrolmentCreate} />
 			  <Route exact path='/enrolmentupdate/:id' component={EnrolmentUpdate} />
+
+			  <Route exact path='/availablecourses' component={AvailableCourses} />
 
 			  <Route
                 path="/logout"

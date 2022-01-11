@@ -40,7 +40,8 @@ const CourseCreate = () => {
                 "courseEnd": courseEnd,
                 "period": period,
                 "level": level,
-                "vacancies": vacancies
+                "vacancies": vacancies, 
+                "price": price
             }),
         })
             //need to fix the json answer
@@ -61,6 +62,7 @@ const CourseCreate = () => {
     const [period, setPeriod] = useState('');
     const [vacancies, setVacancies] = useState('');
     const [level, setLevel] = useState('');
+    const [price, setPrice] = useState('');
 
     return (
         <Container maxWidth="xs">
@@ -121,6 +123,16 @@ const CourseCreate = () => {
                                 id="level"
                                 label="level"
                                 onChange={(e) => setLevel(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="price"
+                                label="price"
+                                onChange={(e) => setPrice(e.target.value)}
                             />
                         </Grid>
                     </Grid>

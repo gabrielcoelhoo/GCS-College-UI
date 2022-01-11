@@ -42,6 +42,7 @@ const CourseUpdate = () => {
           setPeriod(result.period)
           setVacancies(result.vacancies)
           setLevel(result.level)
+          setPrice(result.price)
         }
       )
   }, [id])
@@ -58,7 +59,8 @@ const CourseUpdate = () => {
         "courseEnd": courseEnd,
         "period": period,
         "vacancies": vacancies,
-        "level": level
+        "level": level,
+        "price": price
       }),
     })
       .then(res => res.json())
@@ -79,12 +81,13 @@ const CourseUpdate = () => {
   const [period, setPeriod] = useState('');
   const [vacancies, setVacancies] = useState('');
   const [level, setLevel] = useState('');
+  const [price, setPrice] = useState('');
 
   return (
     <Container maxWidth="xs">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-         Course
+          Course
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={2}>
@@ -155,6 +158,20 @@ const CourseUpdate = () => {
                 label="Level"
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="setLevel"
+                courseStart="setLevel"
+                variant="outlined"
+                required
+                fullWidth
+                value={price}
+                id="price"
+                label="price"
+                onChange={(e) => setPrice(e.target.value)}
                 autoFocus
               />
             </Grid>
