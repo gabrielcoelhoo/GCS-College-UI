@@ -36,7 +36,8 @@ const EmployeeCreate = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "name": name
+                "name": name, 
+                "quantityEnrolments":quantityEnrolments
             }),
         })
             //need to fix the json answer
@@ -53,6 +54,7 @@ const EmployeeCreate = () => {
     }
 
     const [name, setName] = useState('');
+    const [quantityEnrolments, setQuantityEnrolments] = useState('');
  
 
     return (
@@ -73,6 +75,19 @@ const EmployeeCreate = () => {
                                 id="name"
                                 label="name"
                                 onChange={(e) => setName(e.target.value)}
+                                autoFocus
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <TextField
+                                autoComplete="quantityEnrolments"
+                                name="quantityEnrolments"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                id="quantityEnrolments"
+                                label="quantityEnrolments"
+                                onChange={(e) => setQuantityEnrolments(e.target.value)}
                                 autoFocus
                             />
                         </Grid>

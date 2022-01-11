@@ -107,6 +107,7 @@ const EmployeeList = () => {
                 <TableRow>
                   <TableCell align="right">id</TableCell>
                   <TableCell align="center">name</TableCell>
+                  <TableCell align="center">quant.Enrolments</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -118,6 +119,9 @@ const EmployeeList = () => {
                         <TableCell align="left">{employee.name}</TableCell>
                       </Box>
                     </TableCell>
+                    <Box display="flex" justifyContent="center">
+                    <TableCell align="center">{employee.quantityEnrolments}</TableCell>
+                    </Box>
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Button onClick={() => EmployeeUpdate(employee.id)}>Edit</Button>

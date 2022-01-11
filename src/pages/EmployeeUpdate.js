@@ -38,6 +38,7 @@ const EmployeeUpdate = () => {
       .then(
         (result) => {
           setName(result.name)
+          setQuantityEnrolments(result.quantityEnrolments)
         }
       )
   }, [id])
@@ -67,6 +68,7 @@ const EmployeeUpdate = () => {
   }
 
   const [name, setName] = useState('');
+  const [quantityEnrolments, setQuantityEnrolments] = useState('');
 
   return (
     <Container maxWidth="xs">
@@ -87,6 +89,20 @@ const EmployeeUpdate = () => {
                 label="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="quantityEnrolments"
+                name="quantityEnrolments"
+                variant="outlined"
+                required
+                fullWidth
+                id="quantityEnrolments"
+                label="quantityEnrolments"
+                value={quantityEnrolments}
+                onChange={(e) => setQuantityEnrolments(e.target.value)}
                 autoFocus
               />
             </Grid>
