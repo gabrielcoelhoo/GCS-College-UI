@@ -78,7 +78,8 @@ const AvailableCourses = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)  
+          console.log(result)
+          
         }
       )
   }
@@ -111,8 +112,6 @@ const AvailableCourses = () => {
                   <TableCell align="left">level</TableCell>
                   <TableCell align="left">period</TableCell>
                   <TableCell align="center">vancancies</TableCell>
-                  <TableCell align="center">price</TableCell>
-
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -128,8 +127,6 @@ const AvailableCourses = () => {
                     <TableCell align="left">{course.period}</TableCell>
                     <TableCell align="left">{course.level}</TableCell>
                     <TableCell align="left">{course.vacancies}</TableCell>
-                    <TableCell align="left">{course.price}</TableCell>
-
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Button onClick={() => submitEnrol(course.id)}>Choose</Button>

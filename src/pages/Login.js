@@ -62,25 +62,16 @@ const Login = () => {
                     window.localStorage.setItem("token", token);
                     emailUser = result.email;
                     window.localStorage.setItem("emailUser", emailUser);
-                    
+                    // alert(emailUser);
+                    // alert(localStorage.getItem("emailUser"));
                     if(result.token){
                         alert('succesful');
                         window.location.href = '../AvailableCourses';
-                        console.log(window.localStorage.getItem("token"));
                     }else{
                         alert('please provide a correct username and/ or password');
                     }
 
-                    // alert(result['message'])
-                    // if (result['status'] === 'ok') {
-                    //     window.location.href = '../src/components/Users';
-                    // }
-
-                    // if (token) {
-                    //     navigation.navigate("Expense");
-                    // } else {
-                    //     setAnswerResponse("please provide a correct username and/ or password")
-                    // }
+                    
                 }
             )
     }

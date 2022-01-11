@@ -112,6 +112,7 @@ const CourseList = () => {
                   <TableCell align="left">level</TableCell>
                   <TableCell align="left">period</TableCell>
                   <TableCell align="center">vancancies</TableCell>
+                  <TableCell align="center">price</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -127,6 +128,8 @@ const CourseList = () => {
                     <TableCell align="left">{course.period}</TableCell>
                     <TableCell align="left">{course.level}</TableCell>
                     <TableCell align="left">{course.vacancies}</TableCell>
+                    <TableCell align="left">{course.price}</TableCell>
+
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Button onClick={() => CourseUpdate(course.id)}>Edit</Button>
