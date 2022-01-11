@@ -42,7 +42,7 @@ const Login = () => {
         localStorage.setItem('token', token);
       };
 
-
+    //   Authorization: "Bearer " + accessToken
     function userLogin() {
         fetch('http://localhost:8080/api/users/userLogin', {
             method: 'POST',

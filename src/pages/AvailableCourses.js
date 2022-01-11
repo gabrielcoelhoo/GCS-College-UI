@@ -65,6 +65,8 @@ const AvailableCourses = () => {
 
   const submitEnrol = id => {
     // console.log(localStorage.getItem("emailUser"));
+
+    window.localStorage.setItem("courseID", id);
     fetch(`http://localhost:8080/api/enrolments/create`, {
       method: 'POST',
       headers: {
