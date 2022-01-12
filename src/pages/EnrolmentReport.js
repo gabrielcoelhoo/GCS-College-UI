@@ -36,10 +36,9 @@ const useStyles = makeStyles((theme) => ({
 const EnrolmentReport = () => {
   const classes = useStyles();
 
-  
-var id = 1;
-
   const [enrolments, setEnrolments] = useState([])
+
+  const [id, setId] = useState("1");
 
 
   useEffect(() => {
@@ -49,8 +48,8 @@ var id = 1;
   }, [])
 
   const EnrolmentsGet = () => {
-
-    fetch(`http://localhost:8080/api/enrolments/${id}`)
+//need to think about how to pass the id in the url
+    fetch("http://localhost:8080/api/enrolments/1")
       .then(res => res.json())
       .then((result) => {
         console.log(result);
@@ -66,13 +65,13 @@ var id = 1;
           <Box display="flex">
             <Box flexGrow={1}>
               <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                Final Enrolment
+                enrolments
               </Typography>
             </Box>
             <Box>
               <Link to="/enrolmentcreate">
                 <Button variant="contained" color="primary">
-                  CREATE
+                  create a pdf
                 </Button>
               </Link>
             </Box>
@@ -81,115 +80,96 @@ var id = 1;
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
+                  <TableCell align="left">enrolment id</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                  <TableRow key={id}>
+                    <TableCell align="left">{enrolments.id}</TableCell>
+                  </TableRow>
+              </TableBody>
+            </Table>
+
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">course id</TableCell>
+             
                   <TableCell align="center">start</TableCell>
-                  <TableCell align="left">end</TableCell>
-                  <TableCell align="left">period</TableCell>
-                  <TableCell align="left">level</TableCell>
-                  <TableCell align="left">price</TableCell>
+                  <TableCell align="center">end</TableCell>
+                  <TableCell align="center">level</TableCell>
+                  <TableCell align="center">period</TableCell>
+                  <TableCell align="center">price</TableCell>
                 </TableRow>
-                
               </TableHead>
               <TableBody>
-                {enrolments.map((enrolment) => (
-                  <TableRow key={enrolment.id}>
-                    <TableCell align="center">
-                      <Box display="flex" justifyContent="center">
-                        <TableCell align="left">start</TableCell>
-                      </Box>
-                    </TableCell>
-                  <TableCell align="left">{enrolment.course.courseStart}</TableCell>
-                  <TableCell align="left">{enrolment.course.courseEnd}</TableCell>
-                  <TableCell align="left">{enrolment.course.period}</TableCell>
-                  <TableCell align="left">{enrolment.course.level}</TableCell>
-                    </TableRow>
-                ))}
+                  <TableRow key={id}>
+                    <TableCell align="left">{enrolments.course.id}</TableCell>
+                    <TableCell align="center">{enrolments.course.courseStart}</TableCell>
+                    <TableCell align="center">{enrolments.course.courseEnd}</TableCell>
+                    <TableCell align="center">{enrolments.course.level}</TableCell>
+                    <TableCell align="center">{enrolments.course.period}</TableCell>
+                    <TableCell align="center">{enrolments.course.price}</TableCell>
+                  </TableRow>
               </TableBody>
             </Table>
-          </TableContainer>
-          <TableContainer component={Paper}>
+
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="right">enrolment id</TableCell>
-                  <TableCell align="center">status</TableCell>
-                  <TableCell align="left">course id</TableCell>
-                  <TableCell align="left">student id</TableCell>
-                  <TableCell align="left">user id</TableCell>
+                  <TableCell align="left">Employee id</TableCell>
+                  <TableCell align="center">name</TableCell>
+                  <TableCell align="center">quantityEnrolments</TableCell>
                 </TableRow>
-                
               </TableHead>
               <TableBody>
-                {/* {enrolments.map((enrolment) => ( */}
                   <TableRow key={id}>
-                    <TableCell align="right">{id}</TableCell>
-                    <TableCell align="center">
-                      <Box display="flex" justifyContent="center">
-                        <TableCell align="left">status</TableCell>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="left">course</TableCell>
-                    <TableCell align="left">studentid</TableCell>
-                    <TableCell align="left">enrolment</TableCell>
-                    </TableRow>
-                {/* ))} */}
+                    <TableCell align="left">{enrolments.employee.id}</TableCell>
+                    <TableCell align="center">{enrolments.employee.name}</TableCell>
+                    <TableCell align="center">{enrolments.employee.quantityEnrolments}</TableCell>
+                  </TableRow>
               </TableBody>
             </Table>
-          </TableContainer>
-          <TableContainer component={Paper}>
+
+
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="right">enrolment id</TableCell>
-                  <TableCell align="center">status</TableCell>
-                  <TableCell align="left">course id</TableCell>
-                  <TableCell align="left">student id</TableCell>
-                  <TableCell align="left">user id</TableCell>
+                  <TableCell align="left">User id</TableCell>
+                  <TableCell align="center">name</TableCell>
+                  <TableCell align="left">surname</TableCell>
+                  <TableCell align="left">phoneNumber</TableCell>
+                  <TableCell align="left">userComments</TableCell>
+                  <TableCell align="center">country</TableCell>
+                  <TableCell align="center">email</TableCell>
                 </TableRow>
-                
               </TableHead>
               <TableBody>
-                {/* {enrolments.map((enrolment) => ( */}
                   <TableRow key={id}>
-                    <TableCell align="right">{id}</TableCell>
-                    <TableCell align="center">
-                      <Box display="flex" justifyContent="center">
-                        <TableCell align="left">status</TableCell>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="left">course</TableCell>
-                    <TableCell align="left">studentid</TableCell>
-                    <TableCell align="left">enrolment</TableCell>
-                    </TableRow>
-                {/* ))} */}
+                    <TableCell align="left">{enrolments.user.id}</TableCell>
+                    <TableCell align="center">{enrolments.user.name}</TableCell>
+                    <TableCell align="center">{enrolments.user.surname}</TableCell>
+                    <TableCell align="center">{enrolments.user.phoneNumber}</TableCell>
+                    <TableCell align="center">{enrolments.user.userComments}</TableCell>
+                    <TableCell align="center">{enrolments.user.country}</TableCell>
+                    <TableCell align="center">{enrolments.user.email}</TableCell>
+                  </TableRow>
               </TableBody>
             </Table>
-          </TableContainer>
-          <TableContainer component={Paper}>
+
+            
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="right">enrolment id</TableCell>
-                  <TableCell align="center">status</TableCell>
-                  <TableCell align="left">course id</TableCell>
-                  <TableCell align="left">student id</TableCell>
-                  <TableCell align="left">user id</TableCell>
+                  <TableCell align="left">extras status</TableCell>
+                  <TableCell align="left">total</TableCell>
                 </TableRow>
-                
               </TableHead>
               <TableBody>
-                {/* {enrolments.map((enrolment) => ( */}
                   <TableRow key={id}>
-                    <TableCell align="right">{id}</TableCell>
-                    <TableCell align="center">
-                      <Box display="flex" justifyContent="center">
-                        <TableCell align="left">status</TableCell>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="left">course</TableCell>
-                    <TableCell align="left">studentid</TableCell>
-                    <TableCell align="left">enrolment</TableCell>
-                    </TableRow>
-                {/* ))} */}
+                    <TableCell align="left">{enrolments.status}</TableCell>
+                    <TableCell align="left">{enrolments.total}</TableCell>
+                  </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
