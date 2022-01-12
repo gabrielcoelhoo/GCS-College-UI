@@ -109,6 +109,7 @@ const EnrolmentList = () => {
                   <TableCell align="center">status</TableCell>
                   <TableCell align="left">course id</TableCell>
                   <TableCell align="left">student id</TableCell>
+                  <TableCell align="left">employee id</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -120,8 +121,9 @@ const EnrolmentList = () => {
                         <TableCell align="left">{enrolment.status}</TableCell>
                       </Box>
                     </TableCell>
-                    <TableCell align="left">{enrolment.courseId}</TableCell>
-                    <TableCell align="left">{enrolment.studentId}</TableCell>
+                    <TableCell align="left">{enrolment.course.id}</TableCell>
+                    <TableCell align="left">{enrolment.user.id}</TableCell>
+                    <TableCell align="left">{enrolment.employee.id}</TableCell>
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Button onClick={() => EnrolmentUpdate(enrolment.id)}>Edit</Button>

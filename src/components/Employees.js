@@ -120,7 +120,7 @@ const EmployeeList = () => {
                       </Box>
                     </TableCell>
                     <Box display="flex" justifyContent="center">
-                    <TableCell align="center">{employee.quantityEnrolments}</TableCell>
+                    <TableCell align="left">{employee.quantityEnrolments}</TableCell>
                     </Box>
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">

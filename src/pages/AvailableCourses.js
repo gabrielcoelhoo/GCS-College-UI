@@ -74,7 +74,11 @@ const AvailableCourses = () => {
       },
       body: JSON.stringify({
         "courseID": id,
-        "email": localStorage.getItem("emailUser")
+        "email": localStorage.getItem("emailUser"),
+        // "extras":[
+        //   1,2
+        //   //extras id
+        // ]
     }),
     })
       .then(res => res.json())

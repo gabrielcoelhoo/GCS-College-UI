@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
 const CourseCreate = () => {
     const classes = useStyles();
 
+    var extraId = "";
+
     function submitExtra() {
         fetch('http://localhost:8080/api/extras/create', {
             method: 'POST',
@@ -46,6 +48,8 @@ const CourseCreate = () => {
                 (result) => {
                     console.log(result);
                     console.log(result.id);
+                    extraId = result.id;
+                    window.localStorage.setItem("extraId", extraId);
                     // alert(result['message'])
                     // if (result['status'] === 'ok') {
                     //     window.location.href = '../src/components/Courses';
