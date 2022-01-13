@@ -14,7 +14,7 @@ return (
 		GCS College occupies an area of 14,000 m² on Henry street
 		 and has students from various countries in Latin America, Europe and Asia.
 	</p>
-	<img src={img_home} width='50%' height='auto' alt='GCS College campus' />
+	<img src={img_home} width='70%' height='auto' alt='GCS College campus' />
 
 	<h2 className='aboutHome' >About us</h2>
 	<p className='pHome'>At Dublin’s GCS College we offer an English language learning experience which is both fun and educational

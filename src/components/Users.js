@@ -68,17 +68,13 @@ const Users = () => {
     fetch(`http://localhost:8080/api/users/delete/${id}`, {
       method: 'DELETE',
       headers: {
-        Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
     })
       .then(res => res.json())
       .then(
         (result) => {
-          alert(result['message'])
-          if (result['status'] === 'ok') {
-            UsersGet();
-          }
+         console.log(result);
         }
       )
   }

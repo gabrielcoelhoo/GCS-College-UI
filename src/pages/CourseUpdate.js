@@ -51,7 +51,6 @@ const CourseUpdate = () => {
     fetch(`http://localhost:8080/api/courses/update/${id}`, {
       method: 'PUT',
       headers: {
-        Accept: 'application/form-data',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -66,12 +65,7 @@ const CourseUpdate = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
-
-          if (result['status'] === '200') {
-            alert(result[`Course with ID = ${result.id} is updated`])
-            window.location.href = '/';
-          }
+          alert(`course with id = ${result.id} updated`);
         }
       )
   }

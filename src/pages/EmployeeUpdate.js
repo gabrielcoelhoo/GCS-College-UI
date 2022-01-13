@@ -43,6 +43,10 @@ const EmployeeUpdate = () => {
       )
   }, [id])
 
+
+//the quantityEnrolments is not updatting
+
+
   function UpdateEmployee() {
     fetch(`http://localhost:8080/api/employees/update/${id}`, {
       method: 'PUT',
@@ -51,19 +55,15 @@ const EmployeeUpdate = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "name": name
+        "name": name,
+        "quantityEnrolments": quantityEnrolments
       }),
     })
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
-
-          if (result['status'] === '200') {
-            alert(result[`employee with ID = ${result.id} is updated`])
-            window.location.href = '/employees';
-          }
-        }
+          alert(`employee with id = ${result.id} updated`);
+          } 
       )
   }
 

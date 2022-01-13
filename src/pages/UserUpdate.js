@@ -32,6 +32,8 @@ const UserUpdate = () => {
 
   const { id } = useParams();
 
+  //fix 
+
   useEffect(() => {
     fetch(`http://localhost:8080/api/users/${id}`)
       .then(res => res.json())
@@ -60,7 +62,7 @@ const UserUpdate = () => {
         "surname": surname,
         "address": address,
         "phoneNumber": phoneNumber,
-        "usersComments": userComments,
+        "userComments": userComments,
         "country": country,
         "password": password,
         "email": email
@@ -69,12 +71,7 @@ const UserUpdate = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
-
-          if (result['status'] === '200') {
-            alert(result[`User with ID = ${result.id} is updated`])
-            window.location.href = '/users';
-          }
+          alert(`user with id = ${result.id} updated`);
         }
       )
   }

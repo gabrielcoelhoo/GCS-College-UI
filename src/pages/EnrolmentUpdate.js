@@ -60,12 +60,7 @@ const EnrolmentUpdate = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
-
-          if (result['status'] === '200') {
-            alert(result[`Enrolment with ID = ${result.id} is updated`])
-            window.location.href = '/enrolment';
-          }
+          alert(`enrolment with id = ${result.id} updated`);
         }
       )
   }

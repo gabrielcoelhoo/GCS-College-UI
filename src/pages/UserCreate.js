@@ -5,9 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import axios from "axios";
-
-// const baseURL = "http://localhost:8080/login/register";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -28,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
+
+
 const UserCreate = () => {
+ 
+
     const classes = useStyles();
 
 
@@ -36,7 +37,6 @@ const UserCreate = () => {
         fetch('http://localhost:8080/api/users/create', {
             method: 'POST',
             headers: {
-                Accept: 'application/form-data',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
@@ -54,11 +54,7 @@ const UserCreate = () => {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result)
-                    alert(result['message'])
-                    if (result['status'] === 'ok') {
-                        window.location.href = '../src/components/Users';
-                    }
+                    window.location.href = '../AvailableCourses';     
                 }
             )
     }
@@ -72,6 +68,10 @@ const UserCreate = () => {
     const [userComments, setUserComments] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+
+
+    localStorage.setItem('emailUser', email);
+
     return (
         <Container maxWidth="xs">
             <div className={classes.paper}>
