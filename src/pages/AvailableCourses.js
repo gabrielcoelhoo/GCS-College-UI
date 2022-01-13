@@ -12,8 +12,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Link } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,40 +52,15 @@ const AvailableCourses = () => {
       .then((result) => {
         console.log(result);
         setCourses(result);
-        //result.id save locally
       }
       )
   }
 
-  // const CourseUpdate = id => {
-  //   window.location = '/courseupdate/' + id
-  // }
-
   const submitEnrol = id => {
-    // console.log(localStorage.getItem("emailUser"));
-
-    window.localStorage.setItem("courseID", id);
-    fetch(`http://localhost:8080/api/enrolments/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "courseID": id,
-        "email": localStorage.getItem("emailUser"),
-        // "extras":[
-        //   1,2
-        //   //extras id
-        // ]
-    }),
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result)  
-        }
-      )
+    window.location = '/AvailableExtras/';
   }
+
+  window.localStorage.setItem("courseID", this.id);
 
   return (
     <div className={classes.root}>
@@ -99,13 +72,6 @@ const AvailableCourses = () => {
                 courses available
               </Typography>
             </Box>
-            {/* <Box>
-              <Link to="/coursecreate">
-                <Button variant="contained" color="primary">
-                  CREATE
-                </Button>
-              </Link>
-            </Box> */}
           </Box>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -124,7 +90,6 @@ const AvailableCourses = () => {
               <TableBody>
                 {courses.map((course) => (
                   <TableRow key={course.id}>
-                    {/* <TableCell align="right">{course.id}</TableCell> */}
                     <TableCell align="center">
                       <Box display="flex" justifyContent="center">
                         <TableCell align="left">{course.courseStart}</TableCell>
@@ -139,7 +104,6 @@ const AvailableCourses = () => {
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">
                         <Button onClick={() => submitEnrol(course.id)}>Choose</Button>
-                        {/* <Button onClick={() => CourseDelete(course.id)}>Del</Button> */}
                       </ButtonGroup>
                     </TableCell>
                   </TableRow>

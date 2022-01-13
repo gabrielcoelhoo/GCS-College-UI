@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import {useHistory} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,17 +29,8 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
 
-    // const [token, setToken] = React.useState('');
-
     var token = "";
     var emailUser = "";
-
-    const history = useHistory();
-
-
-    const onChange = event => {
-        localStorage.setItem('token', token);
-      };
 
     //   Authorization: "Bearer " + accessToken
     function userLogin() {
@@ -57,13 +47,10 @@ const Login = () => {
             //need to fix the json answer
             .then(res => res.json())
             .then((result) => {
-                    console.log(result);
                     token = result.token;
                     window.localStorage.setItem("token", token);
                     emailUser = result.email;
                     window.localStorage.setItem("emailUser", emailUser);
-                    // alert(emailUser);
-                    // alert(localStorage.getItem("emailUser"));
                     if(result.token){
                         alert('succesful');
                         window.location.href = '../AvailableCourses';

@@ -62,9 +62,7 @@ const EmployeeList = () => {
   }
 
   const EmployeeDelete = id => {
-    var data = {
-      'id': id
-    }
+  
     fetch(`http://localhost:8080/api/employees/delete/${id}`, {
       method: 'DELETE',
       headers: {

@@ -42,7 +42,7 @@ function Navbar() {
       <CssBaseline />
       <Toolbar>
         <Typography variant="h4" className={classes.logo}>
-          Navbar
+          GCS College
           
         </Typography>
         {isMobile ? (

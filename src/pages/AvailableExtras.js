@@ -25,35 +25,48 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-const CourseCreate = () => {
+const AvailableExtras = () => {
+
+    var enrolId = "";
+
     const classes = useStyles();
 
-    var extraId = "";
-
     function submitExtra() {
-        fetch('http://localhost:8080/api/extras/create', {
+        console.log('some useful desc');
+        console.log(quantAcco, quantBook, quantTranfer);
+
+        fetch('http://localhost:8080/api/enrolments/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              "quantAcco": quantAcco,
-              "quantBook": quantBook,
-              "quantTranfer": quantTranfer
+              "email": localStorage.getItem("emailUser"),
+              "courseID": localStorage.getItem("courseID"),
+              "extras":[
+                  {
+                      "id": 1,
+                      "quantity": quantAcco
+                  },
+                  {
+                    "id": 2,
+                    "quantity": quantBook
+                  },
+                  {
+                    "id": 3,
+                    "quantity": quantTranfer
+                  }
+              ]
             }),
         })
             //need to fix the json answer
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
-                    console.log(result.id);
-                    extraId = result.id;
-                    window.localStorage.setItem("extraId", extraId);
-                    // alert(result['message'])
-                    // if (result['status'] === 'ok') {
-                    //     window.location.href = '../src/components/Courses';
-                    // }
+                    enrolId = result.enrolment.id;
+                    console.log(enrolId);
+                    localStorage.setItem("enrolId", enrolId );
+                    window.location.href = '../EnrolmentReport';
                 }
             )
      }
@@ -122,4 +135,4 @@ const CourseCreate = () => {
     );
 }
 
-export default CourseCreate;
+export default AvailableExtras;

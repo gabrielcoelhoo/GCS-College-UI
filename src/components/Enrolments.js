@@ -62,9 +62,6 @@ const EnrolmentList = () => {
   }
 
   const EnrolmentDelete = id => {
-    var data = {
-      'id': id
-    }
     fetch(`http://localhost:8080/api/enrolments/delete/${id}`, {
       method: 'DELETE',
       headers: {

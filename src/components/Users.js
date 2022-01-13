@@ -62,9 +62,6 @@ const Users = () => {
   }
 
   const UserDelete = id => {
-    var data = {
-      'id': id
-    }
     fetch(`http://localhost:8080/api/users/delete/${id}`, {
       method: 'DELETE',
       headers: {

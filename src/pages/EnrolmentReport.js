@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -11,8 +10,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import { Link } from "react-router-dom";
+// import ButtonGroup from '@material-ui/core/ButtonGroup';
+// import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,8 +38,6 @@ const EnrolmentReport = () => {
 
   const [enrolments, setEnrolments] = useState([])
 
-
-
   useEffect(() => {
 
     EnrolmentsGet()
@@ -51,7 +48,6 @@ const EnrolmentReport = () => {
     fetch(`http://localhost:8080/api/enrolments/1`)
       .then(res => res.json())
       .then((result) => {
-        console.log("here");
         console.log(result);
         setEnrolments(result);
       }

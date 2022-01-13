@@ -62,9 +62,6 @@ const CourseList = () => {
   }
 
   const CourseDelete = id => {
-    var data = {
-      'id': id
-    }
    fetch(`http://localhost:8080/api/courses/delete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -75,11 +72,7 @@ const CourseList = () => {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result)
-          // if (result.status === 200) {
-          //   aler);
-          //   CoursesGet();
-          // }
+          console.log(result);
         }
       )
   }
