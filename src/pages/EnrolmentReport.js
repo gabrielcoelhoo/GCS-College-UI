@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
 
 const EnrolmentReport = () => {
   const classes = useStyles();
+  var id = 1;
 
   const [enrolments, setEnrolments] = useState([])
 
-  const [id, setId] = useState("1");
 
 
   useEffect(() => {
@@ -48,10 +48,10 @@ const EnrolmentReport = () => {
   }, [])
 
   const EnrolmentsGet = () => {
-//need to think about how to pass the id in the url
-    fetch("http://localhost:8080/api/enrolments/1")
+    fetch(`http://localhost:8080/api/enrolments/1`)
       .then(res => res.json())
       .then((result) => {
+        console.log("here");
         console.log(result);
         setEnrolments(result);
       }
@@ -68,13 +68,7 @@ const EnrolmentReport = () => {
                 enrolments
               </Typography>
             </Box>
-            <Box>
-              <Link to="/enrolmentcreate">
-                <Button variant="contained" color="primary">
-                  create a pdf
-                </Button>
-              </Link>
-            </Box>
+
           </Box>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -84,9 +78,9 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  <TableRow key={id}>
-                    <TableCell align="left">{enrolments.id}</TableCell>
-                  </TableRow>
+                <TableRow key={id}>
+                  <TableCell align="left">{enrolments.id}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
 
@@ -94,7 +88,7 @@ const EnrolmentReport = () => {
               <TableHead>
                 <TableRow>
                   <TableCell align="left">course id</TableCell>
-             
+
                   <TableCell align="center">start</TableCell>
                   <TableCell align="center">end</TableCell>
                   <TableCell align="center">level</TableCell>
@@ -103,14 +97,14 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  <TableRow key={id}>
-                    <TableCell align="left">{enrolments.course.id}</TableCell>
-                    <TableCell align="center">{enrolments.course.courseStart}</TableCell>
-                    <TableCell align="center">{enrolments.course.courseEnd}</TableCell>
-                    <TableCell align="center">{enrolments.course.level}</TableCell>
-                    <TableCell align="center">{enrolments.course.period}</TableCell>
-                    <TableCell align="center">{enrolments.course.price}</TableCell>
-                  </TableRow>
+                <TableRow key={id}>
+                  <TableCell align="left">{enrolments.course.id}</TableCell>
+                  <TableCell align="center">{enrolments.course.courseStart}</TableCell>
+                  <TableCell align="center">{enrolments.course.courseEnd}</TableCell>
+                  <TableCell align="center">{enrolments.course.level}</TableCell>
+                  <TableCell align="center">{enrolments.course.period}</TableCell>
+                  <TableCell align="center">{enrolments.course.price}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
 
@@ -123,11 +117,11 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  <TableRow key={id}>
-                    <TableCell align="left">{enrolments.employee.id}</TableCell>
-                    <TableCell align="center">{enrolments.employee.name}</TableCell>
-                    <TableCell align="center">{enrolments.employee.quantityEnrolments}</TableCell>
-                  </TableRow>
+                <TableRow key={id}>
+                  <TableCell align="left">{enrolments.employee.id}</TableCell>
+                  <TableCell align="center">{enrolments.employee.name}</TableCell>
+                  <TableCell align="center">{enrolments.employee.quantityEnrolments}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
 
@@ -145,15 +139,15 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  <TableRow key={id}>
-                    <TableCell align="left">{enrolments.user.id}</TableCell>
-                    <TableCell align="center">{enrolments.user.name}</TableCell>
-                    <TableCell align="center">{enrolments.user.surname}</TableCell>
-                    <TableCell align="center">{enrolments.user.phoneNumber}</TableCell>
-                    <TableCell align="center">{enrolments.user.userComments}</TableCell>
-                    <TableCell align="center">{enrolments.user.country}</TableCell>
-                    <TableCell align="center">{enrolments.user.email}</TableCell>
-                  </TableRow>
+                <TableRow key={id}>
+                  <TableCell align="left">{enrolments.user.id}</TableCell>
+                  <TableCell align="center">{enrolments.user.name}</TableCell>
+                  <TableCell align="center">{enrolments.user.surname}</TableCell>
+                  <TableCell align="center">{enrolments.user.phoneNumber}</TableCell>
+                  <TableCell align="center">{enrolments.user.userComments}</TableCell>
+                  <TableCell align="center">{enrolments.user.country}</TableCell>
+                  <TableCell align="center">{enrolments.user.email}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
 
@@ -166,17 +160,17 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  <TableRow key={id}>
-                    <TableCell align="left">{enrolments.status}</TableCell>
-                    <TableCell align="left">{enrolments.total}</TableCell>
-                  </TableRow>
+                <TableRow key={id}>
+                  <TableCell align="left">{enrolments.status}</TableCell>
+                  <TableCell align="left">{enrolments.total}</TableCell>
+                </TableRow>
               </TableBody>
             </Table>
+
           </TableContainer>
         </Paper>
       </Container>
     </div>
-
   );
 }
 
