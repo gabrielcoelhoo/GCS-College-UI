@@ -62,7 +62,7 @@ export default function App() {
 			  <Route exact path='/availablecourses' component={AvailableCourses} />
 			  <Route exact path='/availableextras' component={AvailableExtras} />
 
-			  <Route exact path='/enrolmentreport' component={EnrolmentReport} />
+			  <Route exact path='/enrolmentreport/:id' component={EnrolmentReport} />
 
 
 

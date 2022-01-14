@@ -37,6 +37,7 @@ const UserCreate = () => {
         fetch('http://localhost:8080/api/users/create', {
             method: 'POST',
             headers: {
+                Accept: "application/json",
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({

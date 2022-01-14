@@ -44,7 +44,6 @@ const Login = () => {
                 "email": email
             }),
         })
-            //need to fix the json answer
             .then(res => res.json())
             .then((result) => {
                     token = result.token;
@@ -56,9 +55,7 @@ const Login = () => {
                         window.location.href = '../AvailableCourses';
                     }else{
                         alert('please provide a correct username and/ or password');
-                    }
-
-                    
+                    } 
                 }
             )
     }

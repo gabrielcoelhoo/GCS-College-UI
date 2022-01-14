@@ -10,8 +10,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+
 // import ButtonGroup from '@material-ui/core/ButtonGroup';
 // import Button from '@material-ui/core/Button';
+
+import { useParams } from 'react-router-dom';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,25 +38,43 @@ const useStyles = makeStyles((theme) => ({
 
 const EnrolmentReport = () => {
   const classes = useStyles();
-  var id = 1;
+  // var id = localStorage.getItem("enrolId");
+
+  // // var enrolId = localStorage.getItem("enrolId");
+
+  // var urlPrefix = `http://localhost:8080/api/enrolments/`;
+  // var url = urlPrefix + `${localStorage.getItem("enrolId")}`;
+
+  const { id } = useParams();
 
   const [enrolments, setEnrolments] = useState([])
 
+
   useEffect(() => {
-
-    EnrolmentsGet()
-
-  }, [])
-
-  const EnrolmentsGet = () => {
-    fetch(`http://localhost:8080/api/enrolments/1`)
+    fetch(`http://localhost:8080/api/enrolments/${id}`)
       .then(res => res.json())
-      .then((result) => {
-        console.log(result);
-        setEnrolments(result);
-      }
+      .then(
+        (result) => {
+         setEnrolments(result);
+        }
       )
-  }
+  }, [id])
+
+  // useEffect(() => {
+
+  //   EnrolmentsGet();
+
+  // }, [])
+
+  // const EnrolmentsGet = () => {
+  //   fetch(`http://localhost:8080/api/enrolments/${id}`)
+  //     .then(res => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //       setEnrolments(result);
+  //     }
+  //     )
+  // }
 
   return (
     <div className={classes.root}>
@@ -75,7 +97,7 @@ const EnrolmentReport = () => {
               </TableHead>
               <TableBody>
                 <TableRow key={id}>
-                  <TableCell align="left">{enrolments.id}</TableCell>
+                  <TableCell align="left">{enrolments.data.id}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

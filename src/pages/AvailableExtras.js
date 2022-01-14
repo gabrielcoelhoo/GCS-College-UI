@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -29,99 +31,87 @@ const AvailableExtras = () => {
 
     var enrolId = "";
 
+    const Report = id => {
+        window.location = '../enrolmentreport/' + id
+      }
+
     const classes = useStyles();
 
     function submitExtra() {
-        console.log('some useful desc');
-        console.log(quantAcco, quantBook, quantTranfer);
+        axios
+            .post("http://localhost:8080/api/enrolments/create", {
+                "email": localStorage.getItem("emailUser"),
+                "courseID": localStorage.getItem("courseID"),
+                "extras": [
+                    {
+                        "id": 1,
+                        "quantity": quantAcco
+                    },
+                    {
+                        "id": 2,
+                        "quantity": quantBook
+                    },
+                    {
+                        "id": 3,
+                        "quantity": quantTranfer
+                    }
+                ]
+            })
+            .then((response) => {
+                console.log(response);
+                enrolId = response.data.id;
+                localStorage.setItem("enrolId", enrolId);
+                Report(enrolId);
+            });
+    }
 
-        fetch('http://localhost:8080/api/enrolments/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              "email": localStorage.getItem("emailUser"),
-              "courseID": localStorage.getItem("courseID"),
-              "extras":[
-                  {
-                      "id": 1,
-                      "quantity": quantAcco
-                  },
-                  {
-                    "id": 2,
-                    "quantity": quantBook
-                  },
-                  {
-                    "id": 3,
-                    "quantity": quantTranfer
-                  }
-              ]
-            }),
-        })
-            //need to fix the json answer
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    enrolId = result.enrolment.id;
-                    console.log(enrolId);
-                    localStorage.setItem("enrolId", enrolId );
-                    window.location.href = '../EnrolmentReport';
-                }
-            )
-     }
 
-  
-    const[quantAcco, setQuantAcco]= useState('');
-    const[quantBook, setQuantBook]= useState('');
-    const[quantTranfer, setQuantTransfer]= useState('');
-    
+    const [quantAcco, setQuantAcco] = useState('');
+    const [quantBook, setQuantBook] = useState('');
+    const [quantTranfer, setQuantTransfer] = useState('');
+
 
     return (
         <Container maxWidth="xs">
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                   extras
+                    extras
                 </Typography>
                 <form className={classes.form}>
-                    <Grid container spacing={2}>   
+                    <Grid container spacing={2}>
                         <Grid item xs={12} sm={12}>
                             <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="quantAcco"
-                                label="quantAcco"
                                 onChange={(e) => setQuantAcco(e.target.value)}
                             />
                         </Grid>
-                        
+
                         <Grid item xs={12} sm={12}>
                             <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="quantBook"
-                                label="quantBook"
                                 onChange={(e) => setQuantBook(e.target.value)}
                             />
                         </Grid>
-                        
+
                         <Grid item xs={12} sm={12}>
                             <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="quantTranfer"
-                                label="quantTranfer"
                                 onChange={(e) => setQuantTransfer(e.target.value)}
                             />
                         </Grid>
-                        
+
                     </Grid>
                     <Button
                         onClick={submitExtra}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
