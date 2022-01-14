@@ -38,12 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const EnrolmentReport = () => {
   const classes = useStyles();
-  // var id = localStorage.getItem("enrolId");
-
-  // // var enrolId = localStorage.getItem("enrolId");
-
-  // var urlPrefix = `http://localhost:8080/api/enrolments/`;
-  // var url = urlPrefix + `${localStorage.getItem("enrolId")}`;
 
   const { id } = useParams();
 
@@ -60,21 +54,6 @@ const EnrolmentReport = () => {
       )
   }, [id])
 
-  // useEffect(() => {
-
-  //   EnrolmentsGet();
-
-  // }, [])
-
-  // const EnrolmentsGet = () => {
-  //   fetch(`http://localhost:8080/api/enrolments/${id}`)
-  //     .then(res => res.json())
-  //     .then((result) => {
-  //       console.log(result);
-  //       setEnrolments(result);
-  //     }
-  //     )
-  // }
 
   return (
     <div className={classes.root}>
@@ -94,12 +73,12 @@ const EnrolmentReport = () => {
                 <TableRow>
                   <TableCell align="left">enrolment id</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow key={id}>
-                  <TableCell align="left">{enrolments.data.id}</TableCell>
+                <TableBody>
+                  <TableRow>
+                <TableCell align="left">{enrolments.id}</TableCell>
                 </TableRow>
-              </TableBody>
+                </TableBody>
+              </TableHead>
             </Table>
 
             <Table className={classes.table} aria-label="simple table">
@@ -115,13 +94,13 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow key={id}>
+                <TableRow >
                   <TableCell align="left">{enrolments.course.id}</TableCell>
                   <TableCell align="center">{enrolments.course.courseStart}</TableCell>
                   <TableCell align="center">{enrolments.course.courseEnd}</TableCell>
                   <TableCell align="center">{enrolments.course.level}</TableCell>
                   <TableCell align="center">{enrolments.course.period}</TableCell>
-                  <TableCell align="center">{enrolments.course.price}</TableCell>
+                  <TableCell align="center">{enrolments.course.price}</TableCell>  
                 </TableRow>
               </TableBody>
             </Table>
@@ -135,7 +114,7 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow key={id}>
+                <TableRow >
                   <TableCell align="left">{enrolments.employee.id}</TableCell>
                   <TableCell align="center">{enrolments.employee.name}</TableCell>
                   <TableCell align="center">{enrolments.employee.quantityEnrolments}</TableCell>
@@ -157,7 +136,7 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow key={id}>
+                <TableRow >
                   <TableCell align="left">{enrolments.user.id}</TableCell>
                   <TableCell align="center">{enrolments.user.name}</TableCell>
                   <TableCell align="center">{enrolments.user.surname}</TableCell>
@@ -178,9 +157,9 @@ const EnrolmentReport = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow key={id}>
+                <TableRow>
                   <TableCell align="left">{enrolments.status}</TableCell>
-                  <TableCell align="left">{enrolments.total}</TableCell>
+                  <TableCell align="left">{enrolments.total}</TableCell> 
                 </TableRow>
               </TableBody>
             </Table>
