@@ -41,7 +41,3 @@ GCS College is accredited by ACELS.
 };
 
 export default Home;
-
-//image is taking to long to be loaded
-//figure it out / maybe throw in on web 
-// and attach the link

@@ -109,7 +109,6 @@ const EmployeeUpdate = () => {
           </Grid>
           <Button
             onClick={UpdateEmployee}
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"

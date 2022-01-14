@@ -138,7 +138,6 @@ const CourseCreate = () => {
                     </Grid>
                     <Button
                         onClick={submitCourse}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"

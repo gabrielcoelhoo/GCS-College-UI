@@ -208,7 +208,6 @@ const UserUpdate = () => {
           </Grid>
           <Button
             onClick={UpdateUsers}
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"

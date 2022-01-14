@@ -124,7 +124,6 @@ const EnrolmentUpdate = () => {
           </Grid>
           <Button
             onClick={UpdateEnrolment}
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"

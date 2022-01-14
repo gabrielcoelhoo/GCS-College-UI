@@ -94,7 +94,6 @@ const Login = () => {
                     </Grid>
                     <Button
                         onClick={userLogin}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"

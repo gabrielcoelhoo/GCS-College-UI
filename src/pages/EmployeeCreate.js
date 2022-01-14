@@ -94,7 +94,6 @@ const EmployeeCreate = () => {
                     </Grid>
                     <Button
                         onClick={submitEmployee}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"

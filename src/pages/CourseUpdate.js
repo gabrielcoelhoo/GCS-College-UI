@@ -172,7 +172,6 @@ const CourseUpdate = () => {
           </Grid>
           <Button
             onClick={UpdateCourse}
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"

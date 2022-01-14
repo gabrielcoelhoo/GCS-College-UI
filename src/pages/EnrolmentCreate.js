@@ -102,7 +102,6 @@ const EnrolmentCreate = () => {
                     </Grid>
                     <Button
                         onClick={submitEnrolment}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"

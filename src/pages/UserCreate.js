@@ -167,7 +167,6 @@ const UserCreate = () => {
                     </Grid>
                     <Button
                         onClick={submitStudent}
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
