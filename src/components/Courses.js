@@ -38,8 +38,6 @@ const CourseList = () => {
 
   const [courses, setCourses] = useState([])
 
-
-
   useEffect(() => {
 
     CoursesGet()
@@ -62,7 +60,7 @@ const CourseList = () => {
   }
 
   const CourseDelete = id => {
-   fetch(`http://localhost:8080/api/courses/delete/${id}`, {
+    fetch(`http://localhost:8080/api/courses/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: 'application/form-data',

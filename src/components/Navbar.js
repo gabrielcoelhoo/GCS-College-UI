@@ -43,7 +43,7 @@ function Navbar() {
       <Toolbar>
         <Typography variant="h4" className={classes.logo}>
           GCS College
-          
+
         </Typography>
         {isMobile ? (
           <DrawerComponent />
@@ -53,13 +53,13 @@ function Navbar() {
               Home
             </Link>
             <Link to="/UserCreate" className={classes.link}>
-            Register
+              Register
             </Link>
             <Link to="/login" className={classes.link}>
-            Login
+              Login
             </Link>
             <Link to="/login" className={classes.link}>
-            Logout
+              Logout
             </Link>
           </div>
         )}

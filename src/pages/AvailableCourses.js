@@ -40,13 +40,10 @@ const AvailableCourses = () => {
 
 
   useEffect(() => {
-
     CoursesGet()
-
   }, [])
 
   const CoursesGet = () => {
-
     fetch("http://localhost:8080/api/courses/all")
       .then(res => res.json())
       .then((result) => {
@@ -60,7 +57,7 @@ const AvailableCourses = () => {
     window.location = '/AvailableExtras/';
   }
 
-  window.localStorage.setItem("courseID", this.id);
+
 
   return (
     <div className={classes.root}>
@@ -77,14 +74,12 @@ const AvailableCourses = () => {
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  {/* <TableCell align="right">id</TableCell> */}
                   <TableCell align="center">start</TableCell>
                   <TableCell align="left">end</TableCell>
                   <TableCell align="left">level</TableCell>
                   <TableCell align="left">period</TableCell>
                   <TableCell align="center">vancancies</TableCell>
                   <TableCell align="center">price</TableCell>
-
                 </TableRow>
               </TableHead>
               <TableBody>

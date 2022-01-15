@@ -38,8 +38,6 @@ const EnrolmentList = () => {
 
   const [enrolments, setEnrolments] = useState([])
 
-
-
   useEffect(() => {
 
     EnrolmentsGet()

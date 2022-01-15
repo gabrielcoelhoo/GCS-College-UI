@@ -38,8 +38,6 @@ const Users = () => {
 
   const [users, setUsers] = useState([])
 
-
-
   useEffect(() => {
 
     UsersGet()
@@ -71,7 +69,7 @@ const Users = () => {
       .then(res => res.json())
       .then(
         (result) => {
-         console.log(result);
+          console.log(result);
         }
       )
   }

@@ -38,8 +38,6 @@ const EmployeeList = () => {
 
   const [employees, setEmployees] = useState([])
 
-
-
   useEffect(() => {
 
     EmployeesGet()
@@ -62,7 +60,7 @@ const EmployeeList = () => {
   }
 
   const EmployeeDelete = id => {
-  
+
     fetch(`http://localhost:8080/api/employees/delete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -118,7 +116,7 @@ const EmployeeList = () => {
                       </Box>
                     </TableCell>
                     <Box display="flex" justifyContent="center">
-                    <TableCell align="left">{employee.quantityEnrolments}</TableCell>
+                      <TableCell align="left">{employee.quantityEnrolments}</TableCell>
                     </Box>
                     <TableCell align="center">
                       <ButtonGroup color="primary" aria-label="outlined primary button group">

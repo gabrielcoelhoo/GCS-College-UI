@@ -32,8 +32,6 @@ const UserUpdate = () => {
 
   const { id } = useParams();
 
-  //fix 
-
   useEffect(() => {
     fetch(`http://localhost:8080/api/users/${id}`)
       .then(res => res.json())

@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import axios from "axios";
 
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -33,7 +32,7 @@ const AvailableExtras = () => {
 
     const Report = id => {
         window.location = '../enrolmentreport/' + id
-      }
+    }
 
     const classes = useStyles();
 
@@ -65,11 +64,9 @@ const AvailableExtras = () => {
             });
     }
 
-
     const [quantAcco, setQuantAcco] = useState('');
     const [quantBook, setQuantBook] = useState('');
     const [quantTranfer, setQuantTransfer] = useState('');
-
 
     return (
         <Container maxWidth="xs">
@@ -88,7 +85,6 @@ const AvailableExtras = () => {
                                 onChange={(e) => setQuantAcco(e.target.value)}
                             />
                         </Grid>
-
                         <Grid item xs={12} sm={12}>
                             <TextField
                                 variant="outlined"
@@ -98,7 +94,6 @@ const AvailableExtras = () => {
                                 onChange={(e) => setQuantBook(e.target.value)}
                             />
                         </Grid>
-
                         <Grid item xs={12} sm={12}>
                             <TextField
                                 variant="outlined"
@@ -108,7 +103,6 @@ const AvailableExtras = () => {
                                 onChange={(e) => setQuantTransfer(e.target.value)}
                             />
                         </Grid>
-
                     </Grid>
                     <Button
                         onClick={submitExtra}

@@ -40,7 +40,7 @@ const CourseCreate = () => {
                 "courseEnd": courseEnd,
                 "period": period,
                 "level": level,
-                "vacancies": vacancies, 
+                "vacancies": vacancies,
                 "price": price
             }),
         })
@@ -68,7 +68,7 @@ const CourseCreate = () => {
         <Container maxWidth="xs">
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                   Course
+                    Course
                 </Typography>
                 <form className={classes.form}>
                     <Grid container spacing={2}>

@@ -10,10 +10,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
-// import ButtonGroup from '@material-ui/core/ButtonGroup';
-// import Button from '@material-ui/core/Button';
-
 import { useParams } from 'react-router-dom';
 
 
@@ -41,19 +37,57 @@ const EnrolmentReport = () => {
 
   const { id } = useParams();
 
-  const [enrolments, setEnrolments] = useState([])
-
-
   useEffect(() => {
     fetch(`http://localhost:8080/api/enrolments/${id}`)
       .then(res => res.json())
       .then(
         (result) => {
-         setEnrolments(result);
+          console.log(result);
+          setEnrolmentId(result.id)
+          setCourseStart(result.course.courseStart)
+          setCourseEnd(result.course.courseEnd)
+          setPeriod(result.course.period)
+          setLevel(result.course.level)
+          setPrice(result.course.price)
+
+          setName(result.employee.name)
+
+          setUserId(result.user.id)
+          setNameUser(result.user.name)
+          setSurname(result.user.surname)
+          setAddress(result.user.address)
+          setPhoneNumber(result.user.phoneNumber)
+          setCountry(result.user.country)
+          setUserComments(result.user.userComments)
+          setEmail(result.user.email)
+
+          setEnrolmentsStatus(result.status)
+          setEnrolmentTotal(result.total)
+
         }
       )
   }, [id])
 
+  const [enrolmentId, setEnrolmentId] = useState('');
+  const [courseStart, setCourseStart] = useState('');
+  const [courseEnd, setCourseEnd] = useState('');
+  const [period, setPeriod] = useState('');
+  const [level, setLevel] = useState('');
+  const [price, setPrice] = useState('');
+
+  const [name, setName] = useState('');
+
+  const [userId, setUserId] = useState('');
+  const [nameUser, setNameUser] = useState('');
+  const [surname, setSurname] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [country, setCountry] = useState('');
+  const [userComments, setUserComments] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [enrolmentsStatus, setEnrolmentsStatus] = useState('');
+  const [enrolmentTotal, setEnrolmentTotal] = useState('');
 
   return (
     <div className={classes.root}>
@@ -65,27 +99,29 @@ const EnrolmentReport = () => {
                 enrolments
               </Typography>
             </Box>
-
           </Box>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">enrolment id</TableCell>
+                  <TableCell align="center">enrolment id</TableCell>
+                  <TableCell align="center">name of employee</TableCell>
+                  <TableCell align="left">status</TableCell>
+                  <TableCell align="left">total</TableCell>
                 </TableRow>
-                <TableBody>
-                  <TableRow>
-                <TableCell align="left">{enrolments.id}</TableCell>
-                </TableRow>
-                </TableBody>
               </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align="center">{enrolmentId}</TableCell>
+                  <TableCell align="center">{name}</TableCell>
+                  <TableCell align="left">{enrolmentsStatus}</TableCell>
+                  <TableCell align="left">{enrolmentTotal}</TableCell>
+                </TableRow>
+              </TableBody>
             </Table>
-
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">course id</TableCell>
-
                   <TableCell align="center">start</TableCell>
                   <TableCell align="center">end</TableCell>
                   <TableCell align="center">level</TableCell>
@@ -95,79 +131,60 @@ const EnrolmentReport = () => {
               </TableHead>
               <TableBody>
                 <TableRow >
-                  <TableCell align="left">{enrolments.course.id}</TableCell>
-                  <TableCell align="center">{enrolments.course.courseStart}</TableCell>
-                  <TableCell align="center">{enrolments.course.courseEnd}</TableCell>
-                  <TableCell align="center">{enrolments.course.level}</TableCell>
-                  <TableCell align="center">{enrolments.course.period}</TableCell>
-                  <TableCell align="center">{enrolments.course.price}</TableCell>  
+                  <TableCell align="center">{courseStart}</TableCell>
+                  <TableCell align="center">{courseEnd}</TableCell>
+                  <TableCell align="center">{level}</TableCell>
+                  <TableCell align="center">{period}</TableCell>
+                  <TableCell align="center">{price}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
-
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">Employee id</TableCell>
+                  <TableCell align="center">User id</TableCell>
                   <TableCell align="center">name</TableCell>
-                  <TableCell align="center">quantityEnrolments</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow >
-                  <TableCell align="left">{enrolments.employee.id}</TableCell>
-                  <TableCell align="center">{enrolments.employee.name}</TableCell>
-                  <TableCell align="center">{enrolments.employee.quantityEnrolments}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-
-
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="left">User id</TableCell>
-                  <TableCell align="center">name</TableCell>
-                  <TableCell align="left">surname</TableCell>
-                  <TableCell align="left">phoneNumber</TableCell>
-                  <TableCell align="left">userComments</TableCell>
+                  <TableCell align="center">surname</TableCell>
+                  <TableCell align="center">address</TableCell>
+                  <TableCell align="center">phoneNumber</TableCell>
+                  <TableCell align="center">userComments</TableCell>
                   <TableCell align="center">country</TableCell>
                   <TableCell align="center">email</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <TableRow >
-                  <TableCell align="left">{enrolments.user.id}</TableCell>
-                  <TableCell align="center">{enrolments.user.name}</TableCell>
-                  <TableCell align="center">{enrolments.user.surname}</TableCell>
-                  <TableCell align="center">{enrolments.user.phoneNumber}</TableCell>
-                  <TableCell align="center">{enrolments.user.userComments}</TableCell>
-                  <TableCell align="center">{enrolments.user.country}</TableCell>
-                  <TableCell align="center">{enrolments.user.email}</TableCell>
+                  <TableCell align="center">{userId}</TableCell>
+                  <TableCell align="center">{nameUser}</TableCell>
+                  <TableCell align="center">{surname}</TableCell>
+                  <TableCell align="center">{address}</TableCell>
+                  <TableCell align="center">{phoneNumber}</TableCell>
+                  <TableCell align="center">{userComments}</TableCell>
+                  <TableCell align="center">{country}</TableCell>
+                  <TableCell align="center">{email}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
 
-            
             <Table className={classes.table} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">extras status</TableCell>
-                  <TableCell align="left">total</TableCell>
+                  <TableCell align="center">extras</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow>
-                  <TableCell align="left">{enrolments.status}</TableCell>
-                  <TableCell align="left">{enrolments.total}</TableCell> 
+                <TableRow >
+                  <TableCell align="center"></TableCell>
                 </TableRow>
               </TableBody>
             </Table>
+
+
 
           </TableContainer>
         </Paper>
       </Container>
-    </div>
+    </div >
   );
 }
 

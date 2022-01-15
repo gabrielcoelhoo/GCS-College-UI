@@ -37,9 +37,9 @@ const EnrolmentUpdate = () => {
       .then(res => res.json())
       .then(
         (result) => {
-        setStatus(result.status)
-        setCourseId(result.courseId)
-        setStudentId(result.studentId)
+          setStatus(result.status)
+          setCourseId(result.courseId)
+          setStudentId(result.studentId)
         }
       )
   }, [id])
@@ -65,7 +65,7 @@ const EnrolmentUpdate = () => {
       )
   }
 
-  
+
   const [status, setStatus] = useState('');
   const [courseId, setCourseId] = useState('');
   const [studentId, setStudentId] = useState('');
@@ -120,7 +120,7 @@ const EnrolmentUpdate = () => {
                 autoFocus
               />
             </Grid>
-            
+
           </Grid>
           <Button
             onClick={UpdateEnrolment}
